@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Work — Vaelyn Hargrave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0d0d0d;--white:#fff;--off:#f7f5f1;--lg:#ebebeb;--mg:#aaa;--dg:#555;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',-apple-system,sans-serif;--nav:72px}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--white);color:var(--black);overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;background:var(--white);border-bottom:1px solid var(--lg)}
+.nav-logo{display:flex;flex-direction:column;line-height:1.2}
+.nav-logo .ls{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--mg)}
+.nav-logo .ln{font-family:var(--serif);font-size:1rem;font-weight:600}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links li a{font-size:.8rem;transition:opacity .15s}
+.nav-links li a:hover{opacity:.45}
+.nav-links li a.cta{background:var(--black);color:var(--white);padding:.45rem 1.1rem;font-size:.75rem;letter-spacing:.04em;transition:background .2s}
+.nav-links li a.cta:hover{background:#333;opacity:1}
+.page{padding-top:var(--nav)}
+.eye{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mg);margin-bottom:1rem}
+.site-footer{position:relative;overflow:hidden;background:var(--black);color:var(--white)}
+.footer-bg{width:100%;height:380px;object-fit:cover;object-position:center 20%;opacity:.35;display:block}
+.footer-inner{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:4rem;padding:3rem 2.5rem;align-items:end}
+.fl h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:900;line-height:1.1;letter-spacing:-.02em}
+.fl h2 em{font-style:italic}.fl-arrow{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.75rem}
+.fr{text-align:right}.fr h3{font-family:var(--serif);font-size:1.6rem;font-style:italic;margin-bottom:.25rem}
+.fr p{font-size:.85rem;color:rgba(255,255,255,.5);margin-bottom:1rem;line-height:1.6}
+.fsoc{display:flex;gap:1rem;justify-content:flex-end}
+.fsoc a{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px}
+.fsoc a:hover{color:var(--white)}
+.footer-bot{padding:1rem 2.5rem;background:var(--black);display:flex;justify-content:space-between;font-size:.72rem;color:rgba(255,255,255,.3);border-top:1px solid rgba(255,255,255,.08)}
+.fu{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.fu.on{opacity:1;transform:translateY(0)}
+
+/* WORK PAGE */
+.work-hero{padding:4rem 2.5rem 3rem;max-width:1100px;margin:0 auto;border-bottom:1px solid var(--lg)}
+.work-hero h1{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3.4rem);font-weight:900;letter-spacing:-.02em}
+.work-hero h1 em{font-style:italic}
+.work-list{padding:0 2.5rem 5rem;max-width:1100px;margin:0 auto}
+.wcard{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--lg);min-height:460px;overflow:hidden;transition:background .2s}
+.wcard:hover{background:var(--off)}
+.wcard.rev .wm{order:2}.wcard.rev .wi{order:1}
+.wm{overflow:hidden;position:relative;background:var(--off)}
+.wm video,.wm img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.wcard:hover .wm video,.wcard:hover .wm img{transform:scale(1.03)}
+.wi{padding:3rem;display:flex;flex-direction:column;justify-content:center}
+.wi-tag{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mg);margin-bottom:.75rem}
+.wi-title{font-family:var(--serif);font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:900;line-height:1.15;letter-spacing:-.01em;margin-bottom:1rem}
+.wi-title em{font-style:italic}
+.wi-desc{font-size:.9rem;line-height:1.75;color:var(--dg);margin-bottom:1rem;max-width:380px}
+.stats{display:flex;gap:2rem;padding:1.5rem 0;border-top:1px solid var(--lg);border-bottom:1px solid var(--lg);margin-bottom:1.5rem;flex-wrap:wrap}
+.stat-n{font-family:var(--serif);font-size:1.8rem;font-weight:900}
+.stat-l{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mg);margin-top:.1rem}
+@media(max-width:800px){
+  .site-nav{padding:0 1.25rem}.nav-links{gap:1rem}
+  .nav-links li:not(:last-child):not(:nth-last-child(2)){display:none}
+  .wcard{grid-template-columns:1fr;min-height:auto}
+  .wcard.rev .wm{order:0}.wcard.rev .wi{order:0}
+  .wm{aspect-ratio:16/9}.wi{padding:2rem 1.25rem}
+  .work-hero,.work-list{padding-left:1.25rem;padding-right:1.25rem}
+  .footer-inner{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="../index.html" class="nav-logo"><span class="ls">Strategist</span><span class="ln">Vaelyn Hargrave</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Work</a></li>
+    <li><a href="../about/index.html">About</a></li>
+    <li><a href="../invest/index.html">Invest</a></li>
+    <li><a href="../contact/index.html" class="cta">Work with me</a></li>
+  </ul>
+</nav>
+<div class="page">
+
+<div class="work-hero fu">
+  <p class="eye">Selected Projects</p>
+  <h1>Work that <em>moves</em> the needle.</h1>
+</div>
+
+<div class="work-list" style="padding-top:3rem">
+
+  <div class="wcard fu" id="crema">
+    <div class="wm"><video autoplay muted loop playsinline><source src="../assets/videos/starbucks_crema.mp4" type="video/mp4"></video></div>
+    <div class="wi">
+      <p class="wi-tag">Nestlé · Starbucks · Product Launch · Feb 2025</p>
+      <h3 class="wi-title">Starbucks Crema<br><em>Collection</em></h3>
+      <p class="wi-desc">Launched the Starbucks Premium Instant Crema Collection — a first-of-its-kind premium instant line with a foam finish — across mass, food, eCommerce, club, and value channels simultaneously.</p>
+      <p class="wi-desc">Owned P&amp;L, demand forecasting, stage-gate management, and cross-functional coordination with R&amp;D, finance, supply chain, and merchant teams.</p>
+      <div class="stats">
+        <div><p class="stat-n">$200M</p><p class="stat-l">Portfolio Managed</p></div>
+        <div><p class="stat-n">35%</p><p class="stat-l">Reporting Time Saved</p></div>
+        <div><p class="stat-n">8%</p><p class="stat-l">Overstock Reduction</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wcard rev fu" id="via">
+    <div class="wm"><video autoplay muted loop playsinline><source src="../assets/videos/starbucks_via.mp4" type="video/mp4"></video></div>
+    <div class="wi">
+      <p class="wi-tag">Nestlé · Starbucks VIA® · Multi-Channel GTM</p>
+      <h3 class="wi-title">Starbucks<br><em>VIA® Renovation</em></h3>
+      <p class="wi-desc">Led multi-year sales analysis and GTM renovation strategy for the VIA® Instant portfolio across Walmart, Target, Costco, Sam's Club, and Amazon. Conducted monthly executive-level business reviews using Circana/IRI, Stackline, and PowerBI.</p>
+      <div class="stats">
+        <div><p class="stat-n">$1.2M</p><p class="stat-l">Sam's Club Expansion</p></div>
+        <div><p class="stat-n">5+</p><p class="stat-l">Retail Channels</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wcard fu" id="sbc">
+    <div class="wm"><img src="../assets/images/work_portrait.jpg" alt="Seattle's Best Coffee" style="object-position:center 15%"/></div>
+    <div class="wi">
+      <p class="wi-tag">Nestlé · Seattle's Best Coffee · Brand Renovation</p>
+      <h3 class="wi-title">Seattle's Best<br><em>5-Year Renovation</em></h3>
+      <p class="wi-desc">Developed and launched the Seattle's Best Coffee brand re-launch and 5-year product renovation pipeline for eCommerce, food, mass retail, club, and value channels. Balanced operational constraints, identified risks &amp; opportunities, and ensured inventory availability for channel-specific launch dates.</p>
+    </div>
+  </div>
+
+  <div class="wcard rev fu" id="crowdcow">
+    <div class="wm"><img src="../assets/images/headshot.jpg" alt="Crowd Cow" style="object-position:center 15%"/></div>
+    <div class="wi">
+      <p class="wi-tag">Crowd Cow · DTC eCommerce · 2021–2023</p>
+      <h3 class="wi-title">DTC Category<br><em>Transformation</em></h3>
+      <p class="wi-desc">As Category Manager &amp; Acting Digital Merchandising Manager, built category growth programs managing 40,000+ SKUs across Figma, Contentful, and Shopify. Reduced supplier onboarding from 6 weeks to 1–2 weeks.</p>
+      <div class="stats">
+        <div><p class="stat-n">35%</p><p class="stat-l">YoY Margin Growth</p></div>
+        <div><p class="stat-n">6%</p><p class="stat-l">Avg Quarterly Margin</p></div>
+        <div><p class="stat-n">40k+</p><p class="stat-l">SKUs Managed</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wcard fu" id="skin">
+    <div class="wm"><img src="../assets/images/portrait.jpg" alt="Skin Addiction" style="object-position:center 10%"/></div>
+    <div class="wi">
+      <p class="wi-tag">Skin Addiction · eCommerce + Retail · 2023–2024</p>
+      <h3 class="wi-title">CPG eCommerce<br><em>Category Overhaul</em></h3>
+      <p class="wi-desc">Directed CPG program management and category expansion. Led website redesign with A/B testing, implemented UGC strategy with customer reviews and before/after galleries.</p>
+      <div class="stats">
+        <div><p class="stat-n">+90%</p><p class="stat-l">Monthly Traffic</p></div>
+        <div><p class="stat-n">+25%</p><p class="stat-l">Sales Conversion YoY</p></div>
+        <div><p class="stat-n">−14%</p><p class="stat-l">Operating Costs</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <img class="footer-bg" src="../assets/images/about_portrait.jpg" alt="" aria-hidden="true"/>
+  <div class="footer-inner">
+    <div class="fl"><p class="fl-arrow">↓ Work with me</p><h2>Let's build<br><em>something</em></h2></div>
+    <div class="fr"><h3>Connect</h3><p>Seattle, WA<br>hello@vaelynh.com</p><div class="fsoc"><a href="https://linkedin.com" target="_blank">LinkedIn</a><a href="../contact/index.html">Contact</a></div></div>
+  </div>
+  <div class="footer-bot"><span>© 2026 Vaelyn Hargrave</span><span>Seattle, WA</span></div>
+</footer>
+</div>
+<script>(function(){var els=document.querySelectorAll('.fu');var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');obs.unobserve(x.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});els.forEach(function(el){obs.observe(el)})})();</script>
+</body>
+</html>
