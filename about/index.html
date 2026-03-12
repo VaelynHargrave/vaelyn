@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About — Vaelyn Hargrave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0d0d0d;--white:#fff;--off:#f7f5f1;--lg:#ebebeb;--mg:#aaa;--dg:#555;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',-apple-system,sans-serif;--nav:72px}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--white);color:var(--black);overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;background:var(--white);border-bottom:1px solid var(--lg)}
+.nav-logo{display:flex;flex-direction:column;line-height:1.2}
+.nav-logo .ls{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--mg)}
+.nav-logo .ln{font-family:var(--serif);font-size:1rem;font-weight:600}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links li a{font-size:.8rem;transition:opacity .15s}
+.nav-links li a:hover{opacity:.45}
+.nav-links li a.cta{background:var(--black);color:var(--white);padding:.45rem 1.1rem;font-size:.75rem;letter-spacing:.04em;transition:background .2s}
+.nav-links li a.cta:hover{background:#333;opacity:1}
+.page{padding-top:var(--nav)}
+.eye{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mg);margin-bottom:1rem}
+.btn-solid{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.4rem;background:var(--black);color:var(--white);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500;border:1px solid var(--black);transition:background .2s;cursor:pointer}
+.btn-solid:hover{background:#333}
+.btn-out{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.4rem;border:1px solid var(--black);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500;transition:background .2s,color .2s;cursor:pointer}
+.btn-out:hover{background:var(--black);color:var(--white)}
+.pstrip{overflow:hidden;padding:2rem 0;border-top:1px solid var(--lg)}
+.pstrip-track{display:flex;gap:.75rem;animation:scroll 38s linear infinite;width:max-content}
+.pstrip-track img{height:220px;width:auto;object-fit:cover;flex-shrink:0}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.site-footer{position:relative;overflow:hidden;background:var(--black);color:var(--white)}
+.footer-bg{width:100%;height:380px;object-fit:cover;object-position:center 20%;opacity:.35;display:block}
+.footer-inner{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:4rem;padding:3rem 2.5rem;align-items:end}
+.fl h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:900;line-height:1.1;letter-spacing:-.02em}
+.fl h2 em{font-style:italic}
+.fl-arrow{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.75rem}
+.fr{text-align:right}
+.fr h3{font-family:var(--serif);font-size:1.6rem;font-style:italic;margin-bottom:.25rem}
+.fr p{font-size:.85rem;color:rgba(255,255,255,.5);margin-bottom:1rem;line-height:1.6}
+.fsoc{display:flex;gap:1rem;justify-content:flex-end}
+.fsoc a{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px}
+.fsoc a:hover{color:var(--white)}
+.footer-bot{padding:1rem 2.5rem;background:var(--black);display:flex;justify-content:space-between;font-size:.72rem;color:rgba(255,255,255,.3);border-top:1px solid rgba(255,255,255,.08)}
+.fu{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.fu.on{opacity:1;transform:translateY(0)}
+
+/* ABOUT SPECIFIC */
+.about-hero{padding:4rem 2.5rem 3rem;max-width:900px;margin:0 auto;border-bottom:1px solid var(--lg)}
+.about-hero h1{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3.4rem);font-weight:900;line-height:1.2;letter-spacing:-.02em}
+.about-hero h1 em{font-style:italic}
+.bio-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;padding:4rem 2.5rem;max-width:1100px;margin:0 auto}
+.bio-grid p{font-size:1rem;line-height:1.85;color:var(--dg);margin-bottom:1rem}
+.bio-grid p a{text-decoration:underline}
+.timeline{padding:4rem 2.5rem;max-width:1100px;margin:0 auto;border-top:1px solid var(--lg)}
+.timeline h2{font-family:var(--serif);font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:900;margin-bottom:2.5rem}
+.trow{display:grid;grid-template-columns:180px 1fr;padding:1.2rem 0;border-bottom:1px solid var(--lg);gap:2rem}
+.tdate{font-size:.82rem;color:var(--mg);padding-top:2px}
+.tinfo{display:flex;flex-direction:column;gap:.15rem}
+.tco{font-weight:500;font-size:.95rem}
+.trole{font-size:.82rem;color:var(--mg)}
+.tbul{list-style:none;margin-top:.5rem;display:flex;flex-direction:column;gap:.3rem}
+.tbul li{font-size:.82rem;color:var(--dg);padding-left:1rem;position:relative}
+.tbul li::before{content:'—';position:absolute;left:0;color:var(--mg)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;padding:4rem 2.5rem;max-width:1100px;margin:0 auto;border-top:1px solid var(--lg)}
+.skill-col h3{font-family:var(--serif);font-size:1rem;font-weight:600;margin-bottom:1rem}
+.skill-col ul{list-style:none}
+.skill-col ul li{font-size:.85rem;color:var(--dg);padding:.4rem 0;border-bottom:1px solid var(--lg)}
+.edu{padding:4rem 2.5rem;max-width:1100px;margin:0 auto;border-top:1px solid var(--lg)}
+.edu h2{font-family:var(--serif);font-size:1.6rem;font-weight:900;margin-bottom:2rem}
+@media(max-width:800px){
+  .site-nav{padding:0 1.25rem}.nav-links{gap:1rem}
+  .nav-links li:not(:last-child):not(:nth-last-child(2)){display:none}
+  .bio-grid{grid-template-columns:1fr;gap:2rem;padding:2rem 1.25rem}
+  .skills-grid{grid-template-columns:1fr;padding:2rem 1.25rem}
+  .trow{grid-template-columns:1fr;gap:.25rem}
+  .timeline,.edu{padding:2rem 1.25rem}
+  .about-hero{padding:2rem 1.25rem}
+  .footer-inner{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="/vaelyn/index.html" class="nav-logo"><span class="ls">Strategist</span><span class="ln">Vaelyn Hargrave</span></a>
+  <ul class="nav-links">
+    <li><a href="/vaelyn/work/index.html">Work</a></li>
+    <li><a href="/vaelyn/index.html">About</a></li>
+    <li><a href="/vaelyn/invest/index.html">Invest</a></li>
+    <li><a href="/vaelyn/contact/index.html" class="cta">Work with me</a></li>
+  </ul>
+</nav>
+<div class="page">
+
+<div class="about-hero fu">
+  <p class="eye">About</p>
+  <h1>Vaelyn is a strategist, builder, and operator. She has a gift for <em>connecting data to growth</em> — and using it to transform brands and categories.</h1>
+</div>
+
+<div class="bio-grid">
+  <div class="fu">
+    <img src="/vaelyn/assets/images/about_portrait.jpg" alt="Vaelyn Hargrave" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 10%"/>
+  </div>
+  <div class="fu">
+    <p>I recently led product commercialization at <strong>Nestlé — Starbucks &amp; Nestlé Coffee Partners</strong>, managing a $200M CPG portfolio across mass, food, eCommerce, club, and value channels — including Walmart, Target, Costco, Sam's Club, and Amazon.</p>
+    <p>I launched the <strong>Starbucks Premium Instant Crema Collection</strong> in February 2025, the Seattle's Best Coffee brand re-launch, and drove a $1.2M assortment expansion at Sam's Club — all while building the infrastructure to make future launches faster and smarter.</p>
+    <p>Before Nestlé, I led category management at Crowd Cow, growing margins 35% YoY and managing 40,000+ SKUs. Before that, roles at Skin Addiction, Gift Horse Gems, Zulily, and Nordstrom gave me a full-stack view of eCommerce, retail, and brand building.</p>
+    <p>I've operated at every stage — from scrappy DTC startups to global CPG conglomerates. That range is my edge.</p>
+    <div style="display:flex;gap:1rem;margin-top:2rem">
+      <a href="/vaelyn/contact/index.html" class="btn-solid">Work with me</a>
+      <a href="https://linkedin.com" target="_blank" class="btn-out">LinkedIn ↗</a>
+    </div>
+  </div>
+</div>
+
+<div class="timeline fu">
+  <h2>7+ years building brands and categories.</h2>
+  <div class="trow"><div class="tdate">Jan 2026 — Present</div><div class="tinfo"><span class="tco">Dr. Anne Association</span><span class="trole">Director, Board of Directors / Seattle, WA</span><ul class="tbul"><li>Led GTM strategy and website redesign — boosted monthly traffic by 75%</li><li>CRM setup (Mailchimp + HubSpot) and LinkedIn automation via Dripify/Expandi</li></ul></div></div>
+  <div class="trow"><div class="tdate">Oct 2024 — 2026</div><div class="tinfo"><span class="tco">Nestlé — Starbucks &amp; Nestlé Coffee Partners</span><span class="trole">Program Analyst, Product Development &amp; Commercialization / Seattle, WA</span><ul class="tbul"><li>Managed $200M CPG portfolio across mass, food, eComm, club &amp; value</li><li>Launched Starbucks Crema Collection &amp; Seattle's Best re-brand (Feb 2025)</li><li>Led $1.2M Sam's Club assortment expansion</li><li>Built NIF dashboard — reduced reporting time 35%, overstock by 8%</li></ul></div></div>
+  <div class="trow"><div class="tdate">2024</div><div class="tinfo"><span class="tco">Gift Horse Gems</span><span class="trole">Senior Category Manager / Seattle, WA</span><ul class="tbul"><li>+225% MoM website traffic through UI overhaul and channel expansion</li><li>Sourced globally and cut material costs by 20%</li></ul></div></div>
+  <div class="trow"><div class="tdate">2023 — 2024</div><div class="tinfo"><span class="tco">Skin Addiction</span><span class="trole">Director of Category Management / Seattle, WA</span><ul class="tbul"><li>+25% sales conversion YoY, −14% operating costs</li><li>+90% monthly traffic from website redesign &amp; A/B testing</li><li>+40% time-on-site from UGC strategy</li></ul></div></div>
+  <div class="trow"><div class="tdate">2021 — 2023</div><div class="tinfo"><span class="tco">Crowd Cow</span><span class="trole">Category Manager &amp; Acting Digital Merchandising Manager / Seattle, WA</span><ul class="tbul"><li>35% YoY category margin growth</li><li>Managed 40,000+ SKUs across Shopify, Contentful, Figma</li><li>Reduced onboarding from 6 weeks to 1–2 weeks</li></ul></div></div>
+  <div class="trow"><div class="tdate">2021</div><div class="tinfo"><span class="tco">Zulily</span><span class="trole">Buyer / Seattle, WA</span><ul class="tbul"><li>Exceeded quarterly sales goal by 22%</li></ul></div></div>
+  <div class="trow"><div class="tdate">2018 — 2021</div><div class="tinfo"><span class="tco">Nordstrom · AMS</span><span class="trole">Field Sales Coordinator / Field Sales Manager / Seattle, WA</span><ul class="tbul"><li>+28% sales ratio YoY at Nordstrom</li></ul></div></div>
+  <div class="trow"><div class="tdate">2017 — 2018</div><div class="tinfo"><span class="tco">Advantage Solutions</span><span class="trole">Field Merchandiser / Seattle, WA</span></div></div>
+  <div style="display:flex;gap:1rem;margin-top:2rem">
+    <a href="/vaelyn/contact/index.html" class="btn-solid">Work with me</a>
+    <a href="https://linkedin.com" target="_blank" class="btn-out">View LinkedIn</a>
+  </div>
+</div>
+
+<div class="skills-grid fu">
+  <div class="skill-col"><h3>Sales &amp; P&amp;L</h3><ul><li>Executive business reviews</li><li>Assortment strategy</li><li>Margin &amp; profitability analysis</li><li>Trade spend optimization</li><li>Price &amp; payment negotiation</li><li>Promotional planning</li><li>Vendor compliance</li></ul></div>
+  <div class="skill-col"><h3>Data &amp; Operations</h3><ul><li>PowerBI · Circana/IRI · Stackline</li><li>Tableau · Excel · Google Sheets</li><li>Demand &amp; supply forecasting</li><li>Inventory &amp; allocation</li><li>Stage-gate process management</li><li>Asana · Smartsheet · Confluence</li></ul></div>
+  <div class="skill-col"><h3>Digital &amp; eCommerce</h3><ul><li>SEO &amp; A/B testing</li><li>Shopify · Figma · Contentful</li><li>Wordpress · GitHub · Wix</li><li>HubSpot · Mailchimp</li><li>AI &amp; agentic automation</li><li>UX research &amp; sprint planning</li></ul></div>
+</div>
+
+<div class="edu fu">
+  <h2>Education</h2>
+  <div class="trow"><div class="tdate">Bellevue, WA</div><div class="tinfo"><span class="tco">Bellevue College</span><span class="trole">Entrepreneurship &amp; Product Development Certificate · Product Development &amp; Innovation Certificate</span></div></div>
+  <div class="trow"><div class="tdate">Spokane, WA</div><div class="tinfo"><span class="tco">Spokane Falls Community College</span><span class="trole">Marketing and Design</span></div></div>
+  <div class="trow"><div class="tdate">Duvall, WA</div><div class="tinfo"><span class="tco">School of Art &amp; Innovation</span><span class="trole">Design and Branding</span></div></div>
+</div>
+
+<div class="pstrip">
+  <div class="pstrip-track">
+    <img src="/vaelyn/assets/images/hero_portrait.jpg" alt="" style="width:165px"/><img src="/vaelyn/assets/images/about_portrait.jpg" alt="" style="width:165px"/><img src="/vaelyn/assets/images/work_portrait.jpg" alt="" style="width:165px"/><img src="/vaelyn/assets/images/headshot.jpg" alt="" style="width:165px"/><img src="/vaelyn/assets/images/portrait.jpg" alt="" style="width:165px"/><img src="/vaelyn/assets/images/hero_edit.jpg" alt="" style="width:165px"/>
+    <img src="/vaelyn/assets/images/hero_portrait.jpg" alt="" style="width:165px"/><img src="/vaelyn/assets/images/about_portrait.jpg" alt="" style="width:165px"/><img src="/vaelyn/assets/images/work_portrait.jpg" alt="" style="width:165px"/><img src="/vaelyn/assets/images/headshot.jpg" alt="" style="width:165px"/><img src="/vaelyn/assets/images/portrait.jpg" alt="" style="width:165px"/><img src="/vaelyn/assets/images/hero_edit.jpg" alt="" style="width:165px"/>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <img class="footer-bg" src="/vaelyn/assets/images/about_portrait.jpg" alt="" aria-hidden="true"/>
+  <div class="footer-inner">
+    <div class="fl"><p class="fl-arrow">↓ Work with me</p><h2>Let's build<br><em>something</em></h2></div>
+    <div class="fr"><h3>Connect</h3><p>Seattle, WA<br>hello@vaelynh.com</p><div class="fsoc"><a href="https://linkedin.com" target="_blank">LinkedIn</a><a href="/vaelyn/contact/index.html">Contact</a></div></div>
+  </div>
+  <div class="footer-bot"><span>© 2026 Vaelyn Hargrave</span><span>Seattle, WA</span></div>
+</footer>
+</div>
+<script>(function(){var els=document.querySelectorAll('.fu');var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');obs.unobserve(x.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});els.forEach(function(el){obs.observe(el)})})();</script>
+</body>
+</html>

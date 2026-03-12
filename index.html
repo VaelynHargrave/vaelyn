@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact — Vaelyn Hargrave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0d0d0d;--white:#fff;--off:#f7f5f1;--lg:#ebebeb;--mg:#aaa;--dg:#555;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',-apple-system,sans-serif;--nav:72px}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--white);color:var(--black);overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;background:var(--white);border-bottom:1px solid var(--lg)}
+.nav-logo{display:flex;flex-direction:column;line-height:1.2}
+.nav-logo .ls{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--mg)}
+.nav-logo .ln{font-family:var(--serif);font-size:1rem;font-weight:600}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links li a{font-size:.8rem;transition:opacity .15s}
+.nav-links li a:hover{opacity:.45}
+.nav-links li a.cta{background:var(--black);color:var(--white);padding:.45rem 1.1rem;font-size:.75rem;letter-spacing:.04em;transition:background .2s}
+.nav-links li a.cta:hover{background:#333;opacity:1}
+.page{padding-top:var(--nav)}
+.site-footer{position:relative;overflow:hidden;background:var(--black);color:var(--white)}
+.footer-bg{width:100%;height:380px;object-fit:cover;object-position:center 20%;opacity:.35;display:block}
+.footer-inner{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:4rem;padding:3rem 2.5rem;align-items:end}
+.fl h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:900;line-height:1.1;letter-spacing:-.02em}
+.fl h2 em{font-style:italic}.fl-arrow{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.75rem}
+.fr{text-align:right}.fr h3{font-family:var(--serif);font-size:1.6rem;font-style:italic;margin-bottom:.25rem}
+.fr p{font-size:.85rem;color:rgba(255,255,255,.5);margin-bottom:1rem;line-height:1.6}
+.fsoc{display:flex;gap:1rem;justify-content:flex-end}
+.fsoc a{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px}
+.fsoc a:hover{color:var(--white)}
+.footer-bot{padding:1rem 2.5rem;background:var(--black);display:flex;justify-content:space-between;font-size:.72rem;color:rgba(255,255,255,.3);border-top:1px solid rgba(255,255,255,.08)}
+.fu{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.fu.on{opacity:1;transform:translateY(0)}
+
+/* CONTACT */
+.contact-wrap{padding:5rem 2.5rem;max-width:1100px;margin:0 auto}
+.contact-wrap h1{font-family:var(--serif);font-size:clamp(2rem,4vw,4rem);font-weight:900;line-height:1.1;margin-bottom:2.5rem;letter-spacing:-.02em}
+.contact-wrap h1 em{font-style:italic}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem}
+.contact-grid p{font-size:.95rem;color:var(--dg);line-height:1.8;margin-bottom:.4rem}
+.contact-grid a{text-decoration:underline;text-underline-offset:3px}
+.csoc{margin-top:2rem;display:flex;flex-direction:column;gap:0}
+.csoc a{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dg);border-bottom:1px solid var(--lg);padding:.85rem 0;display:flex;justify-content:space-between;align-items:center;transition:color .15s}
+.csoc a:hover{color:var(--black)}
+.csoc a::after{content:'↗';font-style:normal}
+.services{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--lg)}
+.services p.eye{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mg);margin-bottom:1rem}
+.services ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.services ul li{font-size:.88rem;color:var(--dg)}
+.services ul li::before{content:'→ ';color:var(--mg)}
+@media(max-width:800px){
+  .site-nav{padding:0 1.25rem}.nav-links{gap:1rem}
+  .nav-links li:not(:last-child):not(:nth-last-child(2)){display:none}
+  .contact-grid{grid-template-columns:1fr;gap:2rem}
+  .contact-wrap{padding:3rem 1.25rem}
+  .footer-inner{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="/vaelyn/index.html" class="nav-logo"><span class="ls">Strategist</span><span class="ln">Vaelyn Hargrave</span></a>
+  <ul class="nav-links">
+    <li><a href="/vaelyn/work/index.html">Work</a></li>
+    <li><a href="/vaelyn/about/index.html">About</a></li>
+    <li><a href="/vaelyn/invest/index.html">Invest</a></li>
+    <li><a href="/vaelyn/index.html" class="cta">Work with me</a></li>
+  </ul>
+</nav>
+<div class="page">
+
+<div class="contact-wrap fu">
+  <p style="font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#aaa;margin-bottom:1rem">Contact</p>
+  <h1>Let's build<br><em>something great.</em></h1>
+  <div class="contact-grid">
+    <div>
+      <p>Open to strategic consulting, product leadership, category management, and CPG M&amp;A advisory.</p>
+      <br/>
+      <p><strong>Seattle, WA</strong></p>
+      <p><a href="mailto:hello@vaelynh.com">hello@vaelynh.com</a></p>
+      <div class="csoc">
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        <a href="/vaelyn/invest/index.html">Schedule a call</a>
+        <a href="/vaelyn/work/index.html">View work</a>
+      </div>
+      <div class="services">
+        <p class="eye">What I work on</p>
+        <ul>
+          <li>CPG product strategy &amp; commercialization</li>
+          <li>Category management &amp; P&amp;L ownership</li>
+          <li>eCommerce merchandising &amp; GTM</li>
+          <li>Brand re-launch &amp; innovation pipelines</li>
+          <li>M&amp;A advisory &amp; brand evaluation</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <img src="/vaelyn/assets/images/hero_portrait.jpg" alt="Vaelyn Hargrave" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 10%"/>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <img class="footer-bg" src="/vaelyn/assets/images/about_portrait.jpg" alt="" aria-hidden="true"/>
+  <div class="footer-inner">
+    <div class="fl"><p class="fl-arrow">↓ Send a message</p><h2>Let's build<br><em>something</em></h2></div>
+    <div class="fr"><h3>Connect</h3><p>Seattle, WA<br>hello@vaelynh.com</p><div class="fsoc"><a href="https://linkedin.com" target="_blank">LinkedIn</a></div></div>
+  </div>
+  <div class="footer-bot"><span>© 2026 Vaelyn Hargrave</span><span>Seattle, WA</span></div>
+</footer>
+</div>
+<script>(function(){var els=document.querySelectorAll('.fu');var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');obs.unobserve(x.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});els.forEach(function(el){obs.observe(el)})})();</script>
+</body>
+</html>
