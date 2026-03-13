@@ -231,19 +231,7 @@ img,video{display:block;max-width:100%}
 .footer-tagline h3 em{font-style:italic}
 .footer-bot{padding:.8rem var(--pad);display:flex;justify-content:space-between;font-size:.64rem;color:rgba(255,255,255,.2);border-top:1px solid rgba(255,255,255,.07)}
 
-/* ══════════════════════════════════════
-   MOBILE SCROLL FADE — text overlays image/video as it scrolls to center
-   Only active on mobile (≤600px)
-   ══════════════════════════════════════ */
-.wcard-mob-wrap{position:relative}
-
 /* RESPONSIVE */
-@media(min-width:901px){
-  /* Desktop: stats visible alongside text */
-  .hero-aside{display:block}
-  /* Desktop hero: title spans full width above the 2-col grid */
-}
-
 @media(max-width:900px){
   .nav-links{display:none}
   .hamburger{display:flex}
@@ -266,105 +254,11 @@ img,video{display:block;max-width:100%}
   .footer-body{grid-template-columns:1fr;gap:0;padding:2rem var(--pad);justify-items:center}
   .footer-icons{justify-content:center}
 
-  /* ── MOBILE WORK CARDS ──
-     Each card: title above, image/video full width below, text fades in over image as it scrolls to center
-     Stats float right next to title */
-  .wcard-crema,.wcard-ml,.wcard-mr,.wcard-3col{
-    display:block;
-    background:var(--white);
-    margin-bottom:0;
-  }
-  /* Hide desktop text box on mobile — replaced by .mob-text overlay */
-  .wcard-crema .wi,.wcard-ml .wi,.wcard-mr .wi{display:none}
-  /* Media: full width, 16:9 */
-  .wcard-crema .wm,.wcard-ml .wm,.wcard-mr .wm{
-    aspect-ratio:16/9;width:100%;border-radius:var(--r);
-  }
-  /* 3col: show center text col only, stack */
+  /* Work cards: same grid layout on all screen sizes, just column width adapts */
+  .wcard-crema,.wcard-ml,.wcard-mr{grid-template-columns:1fr}
+  .wcard-3col{grid-template-columns:1fr}
   .wcard-3col .col3-img:first-child{display:none}
-  .wcard-3col .col3-img:last-child{
-    display:block;aspect-ratio:16/9;border-radius:var(--r);
-    width:100%;
-  }
-  .wcard-3col .wi{display:none} /* also replaced by overlay */
-
-  /* Mobile card wrapper */
-  .mob-card{
-    margin-bottom:var(--gap);
-    border-radius:var(--r);
-    overflow:hidden;
-    position:relative;
-  }
-  /* Mobile title row: title left, stats right */
-  .mob-title-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    padding:.75rem var(--pad) .5rem;
-    gap:.5rem;
-  }
-  .mob-title{
-    font-family:var(--serif);
-    font-size:clamp(1.2rem,5vw,1.6rem);
-    font-weight:900;line-height:1.1;letter-spacing:-.02em;
-    flex:1;
-  }
-  .mob-title em{font-style:italic;font-weight:400}
-  .mob-stats{
-    display:flex;flex-direction:column;align-items:flex-end;gap:.2rem;flex-shrink:0;
-  }
-  .mob-stat{text-align:right}
-  .mob-stat .stat-n{font-family:var(--serif);font-size:1.4rem;font-weight:900;line-height:1}
-  .mob-stat .stat-l{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mg)}
-
-  /* Media container for scroll-fade */
-  .mob-media-wrap{
-    position:relative;
-    overflow:hidden;
-    border-radius:0 0 var(--r) var(--r);
-  }
-  .mob-media-wrap video,.mob-media-wrap img{
-    width:100%;display:block;aspect-ratio:16/9;object-fit:cover;border-radius:0;
-  }
-  /* Text overlay — fades in as image scrolls to center */
-  .mob-text-overlay{
-    position:absolute;inset:0;
-    display:flex;flex-direction:column;justify-content:flex-end;
-    padding:1.25rem var(--pad);
-    background:linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,.92) 40%, rgba(255,255,255,0) 100%);
-    opacity:0;
-    transition:opacity .4s ease;
-    pointer-events:none;
-  }
-  .mob-text-overlay.visible{opacity:1;pointer-events:auto}
-  .mob-overlay-tag{font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mg);margin-bottom:.4rem}
-  .mob-overlay-desc{font-size:.924rem;line-height:1.75;color:var(--dg)}
-
-  /* Hero mobile: person image fade overlay */
-  .hero-mob-img-wrap{
-    position:relative;overflow:hidden;border-radius:var(--r);margin-top:1rem;
-  }
-  .hero-mob-img-wrap img{
-    width:100%;display:block;aspect-ratio:3/4;object-fit:cover;object-position:center 5%;
-  }
-  .hero-mob-overlay{
-    position:absolute;inset:0;
-    display:flex;flex-direction:column;justify-content:flex-end;
-    padding:1.5rem var(--pad);
-    background:linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,.9) 35%, rgba(255,255,255,0) 75%);
-    opacity:0;transition:opacity .4s ease;pointer-events:none;
-  }
-  .hero-mob-overlay.visible{opacity:1;pointer-events:auto}
-  .hero-mob-stats{font-size:.82rem;color:var(--dg);line-height:1.9;margin-bottom:1rem}
-  .hero-mob-stats strong{color:var(--black);font-weight:600}
-  .hero-mob-actions{display:flex;gap:.75rem;flex-wrap:wrap}
-  /* Hide desktop actions/aside on mobile */
-  .hero-actions,.hero-aside{display:none}
-}
-
-@media(max-width:600px){
-  /* Narrowest mobile */
-  .mob-title{font-size:clamp(1.1rem,4.5vw,1.4rem)}
+  .wcard-mr .wm{order:-1}
 }
 </style>
 </head>
@@ -439,21 +333,6 @@ img,video{display:block;max-width:100%}
       <img src="/vaelyn/assets/images/hero_color.jpg" alt="Vaelyn Hargrave"/>
     </div>
   </div>
-  <!-- Mobile only: person image with scroll-fade overlay showing stats + buttons -->
-  <div class="hero-mob-img-wrap fu">
-    <img src="/vaelyn/assets/images/hero_color.jpg" alt="Vaelyn Hargrave"/>
-    <div class="hero-mob-overlay" id="heroMobOverlay">
-      <div class="hero-mob-stats">
-        <strong>$200M+</strong> CPG portfolio managed<br>
-        <strong>7+ years</strong> across mass, club, eComm and DTC<br>
-        <strong>3 launches</strong> from concept to shelf in 2024&ndash;25
-      </div>
-      <div class="hero-mob-actions">
-        <a href="#work" class="btn-red">See my work</a>
-        <a href="#about" class="btn-arrow">Meet Vaelyn &rarr;</a>
-      </div>
-    </div>
-  </div>
 </div>
 
 <!-- BRAND LOGOS -->
@@ -504,165 +383,87 @@ img,video{display:block;max-width:100%}
   </div>
 </div>
 
-<!-- WORK SECTION
-     Desktop/tablet: media+text side by side, 10px gaps, beveled, uniform height (crema 16:9)
-     Mobile: title row above, image/video below, text fades in on scroll
--->
+<!-- WORK SECTION: same layout on all screen sizes -->
 <div id="work">
   <div class="sec-hdr fu"><h2>Selected Work</h2></div>
   <div class="work-cards">
 
     <!-- 1. Crema: video natural 16:9, text 25% right -->
-    <div class="mob-card fu">
-      <!-- Mobile title row -->
-      <div class="mob-title-row">
-        <div class="mob-title">Starbucks Crema <em>Collection</em></div>
-        <div class="mob-stats">
-          <div class="mob-stat"><span class="stat-n">$200M</span><span class="stat-l">Portfolio</span></div>
-          <div class="mob-stat"><span class="stat-n">5+</span><span class="stat-l">Channels</span></div>
-        </div>
-      </div>
-      <!-- Desktop card -->
-      <div class="wcard wcard-crema">
-        <div class="wm">
-          <video autoplay muted loop playsinline>
-            <source src="/vaelyn/assets/videos/crema.mp4" type="video/mp4">
-            <img src="/vaelyn/assets/images/crema_1.jpg" alt="Starbucks Crema Collection"/>
-          </video>
-        </div>
-        <div class="wi">
-          <p class="wi-tag">Nestlé &middot; Starbucks &middot; Feb 2025</p>
-          <h3 class="wi-title">Starbucks Crema<br><em>Collection</em></h3>
-          <p class="wi-desc">Launched the Starbucks Premium Instant Crema Collection across mass, food, eCommerce, club, and value channels. Owned P&amp;L, forecasting, stage-gate management, and cross-functional GTM.</p>
-          <div class="wi-stats">
-            <div><p class="stat-n">$200M</p><p class="stat-l">Portfolio</p></div>
-            <div><p class="stat-n">5+</p><p class="stat-l">Channels</p></div>
-          </div>
-        </div>
-      </div>
-      <!-- Mobile media + overlay -->
-      <div class="mob-media-wrap">
+    <div class="wcard wcard-crema fu">
+      <div class="wm">
         <video autoplay muted loop playsinline>
           <source src="/vaelyn/assets/videos/crema.mp4" type="video/mp4">
-          <img src="/vaelyn/assets/images/crema_1.jpg" alt=""/>
+          <img src="/vaelyn/assets/images/crema_1.jpg" alt="Starbucks Crema Collection"/>
         </video>
-        <div class="mob-text-overlay" data-mob-overlay>
-          <p class="mob-overlay-tag">Nestlé &middot; Starbucks &middot; Feb 2025</p>
-          <p class="mob-overlay-desc">Launched the Starbucks Premium Instant Crema Collection across mass, food, eCommerce, club, and value channels. Owned P&amp;L, forecasting, stage-gate management, and GTM.</p>
+      </div>
+      <div class="wi">
+        <p class="wi-tag">Nestlé &middot; Starbucks &middot; Feb 2025</p>
+        <h3 class="wi-title">Starbucks Crema<br><em>Collection</em></h3>
+        <p class="wi-desc">Launched the Starbucks Premium Instant Crema Collection across mass, food, eCommerce, club, and value channels. Owned P&amp;L, forecasting, stage-gate management, and cross-functional GTM.</p>
+        <div class="wi-stats">
+          <div><p class="stat-n">$200M</p><p class="stat-l">Portfolio</p></div>
+          <div><p class="stat-n">5+</p><p class="stat-l">Channels</p></div>
         </div>
       </div>
     </div>
 
     <!-- 2. Three flavors: text 25% left, image 75% right -->
-    <div class="mob-card fu">
-      <div class="mob-title-row">
-        <div class="mob-title">Three <em>flavors,</em> one launch.</div>
+    <div class="wcard wcard-mr fu">
+      <div class="wi">
+        <p class="wi-tag">Product &middot; Flavors &middot; Retail Execution</p>
+        <h3 class="wi-title">Three <em>flavors,</em><br>one launch.</h3>
+        <p class="wi-desc">Molten Chocolate, Salted Caramel, Madagascar Vanilla. Each SKU managed from innovation brief through final shelf placement across 5+ channels with separate demand forecasts per retailer.</p>
       </div>
-      <div class="wcard wcard-mr">
-        <div class="wi">
-          <p class="wi-tag">Product &middot; Flavors &middot; Retail Execution</p>
-          <h3 class="wi-title">Three <em>flavors,</em><br>one launch.</h3>
-          <p class="wi-desc">Molten Chocolate, Salted Caramel, Madagascar Vanilla. Each SKU managed from innovation brief through final shelf placement across 5+ channels with separate demand forecasts per retailer.</p>
-        </div>
-        <div class="wm">
-          <img src="/vaelyn/assets/images/crema_3.jpg" alt="Crema three flavors" style="object-position:center 30%"/>
-        </div>
-      </div>
-      <div class="mob-media-wrap">
-        <img src="/vaelyn/assets/images/crema_3.jpg" alt="" style="object-position:center 30%"/>
-        <div class="mob-text-overlay" data-mob-overlay>
-          <p class="mob-overlay-tag">Product &middot; Flavors &middot; Retail Execution</p>
-          <p class="mob-overlay-desc">Molten Chocolate, Salted Caramel, Madagascar Vanilla. Each SKU managed from innovation brief through final shelf placement across 5+ channels.</p>
-        </div>
+      <div class="wm">
+        <img src="/vaelyn/assets/images/crema_3.jpg" alt="Crema three flavors" style="object-position:center 30%"/>
       </div>
     </div>
 
-    <!-- 3. SBC Pipeline: 3-col with 25% text middle -->
-    <div class="mob-card fu">
-      <div class="mob-title-row">
-        <div class="mob-title">5 Year Innovation <em>Pipeline</em></div>
+    <!-- 3. SBC Pipeline: 3-col, 1/3 img | 1/3 text | 1/3 img -->
+    <div class="wcard-3col fu">
+      <div class="col3-img">
+        <img src="/vaelyn/assets/images/sbc_old.jpg" alt="Seattle's Best old packaging"/>
       </div>
-      <div class="wcard-3col">
-        <div class="col3-img">
-          <img src="/vaelyn/assets/images/sbc_old.jpg" alt="Seattle's Best old packaging"/>
-        </div>
-        <div class="wi">
-          <p class="wi-tag">Nestlé &middot; Seattle's Best Coffee &middot; Brand Renovation</p>
-          <h3 class="wi-title">5 Year Innovation<br><em>Pipeline</em></h3>
-          <p class="wi-desc">Analyzed financial viability of flavors innovation pipeline for Seattle's Best Coffee. Launched the packaging rebrand and cross-functional transition timeline across all 30 eCommerce, food, mass, club, and value channels.</p>
-        </div>
-        <div class="col3-img">
-          <img src="/vaelyn/assets/images/sbc_new.jpg" alt="Seattle's Best new packaging"/>
-        </div>
+      <div class="wi">
+        <p class="wi-tag">Nestlé &middot; Seattle's Best Coffee &middot; Brand Renovation</p>
+        <h3 class="wi-title">5 Year Innovation<br><em>Pipeline</em></h3>
+        <p class="wi-desc">Analyzed financial viability of flavors innovation pipeline for Seattle's Best Coffee. Launched the packaging rebrand and cross-functional transition timeline across all 30 eCommerce, food, mass, club, and value channels.</p>
       </div>
-      <div class="mob-media-wrap">
-        <img src="/vaelyn/assets/images/sbc_new.jpg" alt=""/>
-        <div class="mob-text-overlay" data-mob-overlay>
-          <p class="mob-overlay-tag">Nestlé &middot; Seattle's Best Coffee &middot; Brand Renovation</p>
-          <p class="mob-overlay-desc">Launched the packaging rebrand and cross-functional transition timeline across all 30 channels.</p>
-        </div>
+      <div class="col3-img">
+        <img src="/vaelyn/assets/images/sbc_new.jpg" alt="Seattle's Best new packaging"/>
       </div>
     </div>
 
     <!-- 4. New flavors: text 25% left, image 75% right -->
-    <div class="mob-card fu">
-      <div class="mob-title-row">
-        <div class="mob-title">New flavors, <em>new channels.</em></div>
+    <div class="wcard wcard-mr fu">
+      <div class="wi">
+        <p class="wi-tag">Seattle's Best &middot; Innovation Pipeline &middot; New SKUs</p>
+        <h3 class="wi-title">New flavors,<br><em>new channels.</em></h3>
+        <p class="wi-desc">Launched the new "Lighthouse" light roast and two new flavors "Sea Salt Toffee" and "Campfire S'mores." Oversaw new item forecast projections (NIFs) for K-Cup and Ground formats across all 20 channels.</p>
       </div>
-      <div class="wcard wcard-mr">
-        <div class="wi">
-          <p class="wi-tag">Seattle's Best &middot; Innovation Pipeline &middot; New SKUs</p>
-          <h3 class="wi-title">New flavors,<br><em>new channels.</em></h3>
-          <p class="wi-desc">Launched the new "Lighthouse" light roast and two new flavors "Sea Salt Toffee" and "Campfire S'mores." Oversaw new item forecast projections (NIFs) for K-Cup and Ground formats across all 20 channels.</p>
-        </div>
-        <div class="wm">
-          <img src="/vaelyn/assets/images/sbc_1.jpg" alt="Seattle's Best Light Roast" style="object-position:center 40%"/>
-        </div>
-      </div>
-      <div class="mob-media-wrap">
-        <img src="/vaelyn/assets/images/sbc_1.jpg" alt="" style="object-position:center 40%"/>
-        <div class="mob-text-overlay" data-mob-overlay>
-          <p class="mob-overlay-tag">Seattle's Best &middot; Innovation Pipeline</p>
-          <p class="mob-overlay-desc">Launched "Lighthouse" light roast and two new flavors. Oversaw NIFs for K-Cup and Ground formats across all 20 channels.</p>
-        </div>
+      <div class="wm">
+        <img src="/vaelyn/assets/images/sbc_1.jpg" alt="Seattle's Best Light Roast" style="object-position:center 40%"/>
       </div>
     </div>
 
     <!-- 5. Instant done right: image 75% left, text 25% right -->
-    <div class="mob-card fu">
-      <div class="mob-title-row">
-        <div class="mob-title">Instant done <em>right.</em></div>
-        <div class="mob-stats">
-          <div class="mob-stat"><span class="stat-n">$1.2M</span><span class="stat-l">Sam's</span></div>
-          <div class="mob-stat"><span class="stat-n">5+</span><span class="stat-l">Retailers</span></div>
-        </div>
+    <div class="wcard wcard-ml fu">
+      <div class="wm">
+        <img src="/vaelyn/assets/images/via_1.jpg" alt="Starbucks VIA" style="object-position:center 40%"/>
       </div>
-      <div class="wcard wcard-ml">
-        <div class="wm">
-          <img src="/vaelyn/assets/images/via_1.jpg" alt="Starbucks VIA" style="object-position:center 40%"/>
-        </div>
-        <div class="wi">
-          <p class="wi-tag">Nestlé &middot; Starbucks VIA® &middot; Packaging Updates</p>
-          <h3 class="wi-title">Instant done<br><em>right.</em></h3>
-          <p class="wi-desc">Managed VIA® packaging updates and retailer-specific assortment plans for French Roast, Pike Place, Colombia, and more.</p>
-          <div class="wi-stats">
-            <div><p class="stat-n">$1.2M</p><p class="stat-l">Sam's Expansion</p></div>
-            <div><p class="stat-n">5+</p><p class="stat-l">Retailers</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="mob-media-wrap">
-        <img src="/vaelyn/assets/images/via_1.jpg" alt="" style="object-position:center 40%"/>
-        <div class="mob-text-overlay" data-mob-overlay>
-          <p class="mob-overlay-tag">Nestlé &middot; Starbucks VIA® &middot; Packaging Updates</p>
-          <p class="mob-overlay-desc">Managed VIA® packaging updates and retailer assortment plans for French Roast, Pike Place, Colombia, and more.</p>
+      <div class="wi">
+        <p class="wi-tag">Nestlé &middot; Starbucks VIA® &middot; Packaging Updates</p>
+        <h3 class="wi-title">Instant done<br><em>right.</em></h3>
+        <p class="wi-desc">Managed VIA® packaging updates and retailer-specific assortment plans for French Roast, Pike Place, Colombia, and more.</p>
+        <div class="wi-stats">
+          <div><p class="stat-n">$1.2M</p><p class="stat-l">Sam's Expansion</p></div>
+          <div><p class="stat-n">5+</p><p class="stat-l">Retailers</p></div>
         </div>
       </div>
     </div>
 
   </div>
 </div>
-
 <!-- P2: photo strip REMOVED -->
 
 <!-- RESUME -->
@@ -755,77 +556,14 @@ img,video{display:block;max-width:100%}
 </div>
 
 <script>
-// Hamburger
 var ham=document.getElementById('ham'),menu=document.getElementById('mobileMenu');
 function closeMenu(){menu.classList.remove('open');ham.classList.remove('open');document.body.style.overflow=''}
 ham.addEventListener('click',function(){var o=menu.classList.toggle('open');ham.classList.toggle('open');document.body.style.overflow=o?'hidden':''});
-
-// Scroll-in animations
 (function(){
   var els=document.querySelectorAll('.fu');
   var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{threshold:.06,rootMargin:'0px 0px -20px 0px'});
   els.forEach(function(el){io.observe(el)});
 })();
-
-// Mobile scroll-fade overlays — only active on mobile
-function isMobile(){return window.innerWidth<=900}
-
-// Hero mobile overlay
-var heroWrap=document.querySelector('.hero-mob-img-wrap');
-var heroOverlay=document.getElementById('heroMobOverlay');
-
-// Work card overlays
-var mobOverlays=document.querySelectorAll('[data-mob-overlay]');
-var mobMediaWraps=document.querySelectorAll('.mob-media-wrap');
-
-function getScrollProgress(el){
-  var rect=el.getBoundingClientRect();
-  var vh=window.innerHeight;
-  // 0 = top of element at bottom of screen, 1 = element centered
-  var center=rect.top+rect.height/2;
-  var progress=(vh/2-center+rect.height/2)/rect.height;
-  return Math.max(0,Math.min(1,progress));
-}
-
-function updateFades(){
-  if(!isMobile()) return;
-
-  // Hero overlay
-  if(heroWrap && heroOverlay){
-    var p=getScrollProgress(heroWrap);
-    // Start fading in at 30% scroll progress, fully visible at 65%
-    var opacity=Math.max(0,Math.min(1,(p-.3)/(.65-.3)));
-    if(opacity>0.05) heroOverlay.classList.add('visible');
-    else heroOverlay.classList.remove('visible');
-    heroOverlay.style.opacity=opacity;
-  }
-
-  // Work overlays
-  mobMediaWraps.forEach(function(wrap){
-    var overlay=wrap.querySelector('[data-mob-overlay]');
-    if(!overlay) return;
-    var p=getScrollProgress(wrap);
-    var opacity=Math.max(0,Math.min(1,(p-.25)/(.6-.25)));
-    overlay.style.opacity=opacity;
-    if(opacity>0.05) overlay.classList.add('visible');
-    else overlay.classList.remove('visible');
-  });
-}
-
-// Show/hide mobile-specific elements
-function updateMobileLayout(){
-  var mob=isMobile();
-  // mob-card children: title-row and mob-media-wrap visible on mobile, wcard hidden
-  document.querySelectorAll('.mob-title-row').forEach(function(el){el.style.display=mob?'flex':'none'});
-  document.querySelectorAll('.mob-media-wrap').forEach(function(el){el.style.display=mob?'block':'none'});
-  document.querySelectorAll('.wcard,.wcard-3col').forEach(function(el){el.style.display=mob?'none':''});
-  if(heroWrap) heroWrap.style.display=mob?'block':'none';
-}
-
-window.addEventListener('scroll',updateFades,{passive:true});
-window.addEventListener('resize',function(){updateMobileLayout();updateFades()});
-updateMobileLayout();
-updateFades();
 </script>
 </body>
 </html>
