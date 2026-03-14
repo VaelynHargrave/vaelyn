@@ -56,7 +56,7 @@ img,video{display:block;max-width:100%}
 .btn-white-out{padding:.52rem 1.2rem;border:1.5px solid rgba(255,255,255,.4);border-radius:2rem;font-size:.75rem;font-weight:500;color:rgba(255,255,255,.7);transition:all .2s;display:inline-block}
 .btn-white-out:hover{border-color:var(--white);color:var(--white)}
 
-/* HERO — desktop: text left 50%, image right 50%. Mobile: title → image → body */
+/* HERO */
 .invest-hero{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid rgba(255,255,255,.1);min-height:88vh}
 .ih-left{padding:5rem 3rem 5rem var(--pad);display:flex;flex-direction:column;justify-content:center}
 .ih-left h1{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:900;line-height:1.1;letter-spacing:-.025em;margin-bottom:1.5rem;color:var(--white)}
@@ -120,25 +120,15 @@ img,video{display:block;max-width:100%}
 
 @media(max-width:900px){
   .nav-links{display:none}.hamburger{display:flex}
-  /* Mobile hero: title first, then image, then body */
-  .invest-hero{display:flex;flex-direction:column;min-height:auto;border-bottom:1px solid rgba(255,255,255,.1)}
-  .ih-left{padding:2rem var(--pad) 1rem;order:1}
-  .ih-left h1{font-size:clamp(1.8rem,6vw,2.4rem);margin-bottom:0}
-  .ih-left p{font-size:.85rem;max-width:none}
-  /* Hide body text on mobile — moved after image */
-  .ih-body-mobile{order:3;padding:1.5rem var(--pad) 2rem}
-  .ih-body-mobile p{font-size:.85rem;line-height:1.85;color:rgba(255,255,255,.62);margin-bottom:1rem}
-  .ih-right{order:2;height:65vw;max-height:380px}
-  .ih-right img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+  .invest-hero{grid-template-columns:1fr;min-height:auto}
+  .ih-right{height:320px}.ih-left{padding:3rem var(--pad)}
   .pillars-inner{grid-template-columns:1fr;padding:0 var(--pad)}
   .pillar{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);padding:2rem 0!important}
   .criteria,.booking{grid-template-columns:1fr;gap:2rem;padding:3rem var(--pad)}
-  /* Footer mobile: title left, icons centered bottom */
   .footer-body{padding:2.5rem var(--pad) 10px}
   .footer-l h2{font-size:clamp(1.8rem,7vw,2.8rem)}
   .footer-bot{display:none}
-}
-</style>
+}</style>
 </head>
 <body>
 <nav class="nav">
@@ -185,30 +175,15 @@ img,video{display:block;max-width:100%}
 <div class="invest-hero fu">
   <div class="ih-left">
     <h1>Developing Partnerships, Mergers and Acquisitions in <em>CPG.</em></h1>
+    <p>My mission is to qualify and acquire emerging eCommerce and Retail Businesses, Brands, Intellectual Property, and Patents.</p>
+    <p>My process involves assessments of long-term market viability, supply chain resilience, and margin sustainability to distinguish brands with durable, repeatable earnings power from those reliant on transient frameworks and consumer sentiment. Let's forge a new opportunity together.</p>
+    <div style="display:flex;gap:.65rem;margin-top:1.25rem;flex-wrap:wrap">
+      <a href="#booking" class="btn-red">Schedule a Call</a>
+      <a href="mailto:inquiries@vaelynhargrave.com" class="btn-white-out">Email Vaelyn</a>
+    </div>
   </div>
   <div class="ih-right">
     <img src="/vaelyn/assets/images/hero_bw.jpg" alt="Vaelyn Hargrave"/>
-  </div>
-  <!-- Mobile-only body text block (desktop body is in ih-left below) -->
-  <div class="ih-body-mobile" style="display:none">
-    <p>My mission is to qualify and acquire emerging eCommerce and Retail Businesses, Brands, Intellectual Property, and Patents.</p>
-    <p>My process involves assessments of long-term market viability, supply chain resilience, and margin sustainability to distinguish brands with durable, repeatable earnings power from those reliant on transient frameworks and consumer sentiment. Let's forge a new opportunity together.</p>
-    <div style="display:flex;gap:.65rem;flex-wrap:wrap">
-      <a href="#booking" class="btn-red">Schedule a Call</a>
-      <a href="mailto:inquiries@vaelynhargrave.com" class="btn-white-out">Email Vaelyn</a>
-    </div>
-  </div>
-</div>
-
-<!-- Desktop body text (hidden on mobile, shown via JS) -->
-<div id="ih-desktop-body" class="fu" style="display:none">
-  <div class="ih-left" style="padding:0 3rem 3rem var(--pad);max-width:50%">
-    <p style="font-size:.95rem;line-height:1.85;color:rgba(255,255,255,.62);margin-bottom:1rem;max-width:480px">My mission is to qualify and acquire emerging eCommerce and Retail Businesses, Brands, Intellectual Property, and Patents.</p>
-    <p style="font-size:.95rem;line-height:1.85;color:rgba(255,255,255,.62);margin-bottom:1.5rem;max-width:480px">My process involves assessments of long-term market viability, supply chain resilience, and margin sustainability to distinguish brands with durable, repeatable earnings power from those reliant on transient frameworks and consumer sentiment. Let's forge a new opportunity together.</p>
-    <div style="display:flex;gap:.65rem;flex-wrap:wrap">
-      <a href="#booking" class="btn-red">Schedule a Call</a>
-      <a href="mailto:inquiries@vaelynhargrave.com" class="btn-white-out">Email Vaelyn</a>
-    </div>
   </div>
 </div>
 
@@ -283,35 +258,15 @@ img,video{display:block;max-width:100%}
   </div>
 </footer>
 </div>
-
 <script>
 var ham=document.getElementById('ham'),menu=document.getElementById('mobileMenu');
 function closeMenu(){menu.classList.remove('open');ham.classList.remove('open');document.body.style.overflow=''}
 ham.addEventListener('click',function(){var o=menu.classList.toggle('open');ham.classList.toggle('open');document.body.style.overflow=o?'hidden':''});
-// Show desktop vs mobile body text
-function layoutHero(){
-  var mob=window.innerWidth<=900;
-  var mobileBody=document.querySelector('.ih-body-mobile');
-  var desktopBody=document.getElementById('ih-desktop-body');
-  if(mobileBody) mobileBody.style.display=mob?'flex':'none';
-  if(desktopBody) desktopBody.style.display=mob?'none':'block';
-  // Also add desktop body text directly into ih-left for cleaner layout
-  var ihLeft=document.querySelector('.ih-left');
-  if(ihLeft && !mob && !ihLeft.querySelector('p')){
-    var body=desktopBody.querySelector('.ih-left');
-    if(body){
-      Array.from(body.children).forEach(function(c){ihLeft.appendChild(c.cloneNode(true))});
-      desktopBody.style.display='none';
-    }
-  }
-}
 (function(){
   var els=document.querySelectorAll('.fu');
   var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{threshold:.06,rootMargin:'0px 0px -20px 0px'});
   els.forEach(function(el){io.observe(el)});
 })();
-layoutHero();
-window.addEventListener('resize',layoutHero);
 </script>
 </body>
 </html>
