@@ -1,508 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Vaelyn Hargrave — CPG Strategist</title>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact — Vaelyn Hargrave</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --black:#111;--white:#fff;--off:#f5f4f1;--lg:#e8e8e8;--mg:#999;--dg:#444;--red:#e02020;
-  --serif:'Playfair Display',Georgia,serif;
-  --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  --nav:68px;--pad:10px;--r:10px;--gap:10px;
-}
+:root{--black:#111;--white:#fff;--off:#f5f4f1;--lg:#e8e8e8;--mg:#999;--dg:#444;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',-apple-system,sans-serif;--nav:68px}
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--white);color:var(--black);overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-img,video{display:block;max-width:100%}
-
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:300;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--lg)}
-.nav-logo{display:flex;align-items:center;gap:.55rem}
-.nav-logo-mark{width:34px;height:34px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.nav-logo-mark img{width:100%;height:100%;object-fit:contain;display:block}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.nav{position:fixed;top:0;left:0;right:0;z-index:300;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--lg)}
+.nav-logo{display:flex;align-items:center;gap:.6rem}
+.nav-logo-mark{width:34px;height:34px;border:1.5px solid var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.8rem;font-weight:700;flex-shrink:0}
 .nav-logo-text{display:flex;flex-direction:column;line-height:1.2}
-.nav-logo-text .sub{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mg)}
+.nav-logo-text .sub{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mg)}
 .nav-logo-text .name{font-size:.82rem;font-weight:600}
-.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none}
-.nav-links a{font-size:.78rem;font-weight:400;color:var(--dg);transition:color .15s;white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:1.75rem;list-style:none}
+.nav-links a{font-size:.78rem;font-weight:400;color:var(--dg);transition:color .15s}
 .nav-links a:hover{color:var(--black)}
-.nav-cta{background:var(--red)!important;color:var(--white)!important;padding:.42rem 1rem;border-radius:2rem;font-size:.7rem!important;letter-spacing:.06em;text-transform:uppercase;font-weight:700!important;white-space:nowrap!important}
-.nav-cta:hover{background:#c01818!important}
-
-/* HAMBURGER */
-.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;cursor:pointer;background:none;border:none;padding:4px}
-.hamburger span{display:block;width:24px;height:2px;background:var(--black);transition:all .3s}
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-/* MOBILE MENU */
-.mobile-menu{display:none;position:fixed;inset:0;z-index:200;background:#eceae7;flex-direction:column;padding:calc(var(--nav) + 4px) 8px 8px}
-.mobile-menu.open{display:flex}
-.mobile-menu-items{display:flex;flex-direction:column;flex:1;gap:4px;overflow:hidden}
-.mobile-item{flex:1;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:.9rem 1rem;border-radius:var(--r);background:var(--white);min-height:0}
-.mobile-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--r);object-position:center center}
-.mobile-item.invest-item img{object-position:center bottom}
-.mobile-item-label{position:relative;z-index:1;font-family:var(--serif);font-size:1.85rem;font-weight:700;color:var(--white);line-height:1;text-shadow:0 2px 18px rgba(0,0,0,.8),0 1px 4px rgba(0,0,0,.6)}
-.mobile-item.cta-item{background:var(--red);flex:0 0 54px}
-.mobile-item.cta-item .mobile-item-label{font-family:var(--sans);font-size:.92rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;text-shadow:none}
-
-/* PAGE */
+.nav-cta{background:var(--black)!important;color:var(--white)!important;padding:.4rem 1rem;border-radius:2rem;font-size:.72rem!important;letter-spacing:.04em;font-weight:500!important}
 .page{padding-top:var(--nav)}
-.fu{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.fu{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
 .fu.on{opacity:1;transform:translateY(0)}
-.btn-red{padding:.52rem 1.2rem;background:var(--red);color:var(--white);border-radius:2rem;font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;transition:background .2s;display:inline-block}
-.btn-red:hover{background:#c01818}
-.btn-arrow{font-size:.8rem;color:var(--dg);display:inline-flex;align-items:center;gap:.3rem;font-weight:500}
 
-/* HERO — same layout as invest: text left, image right 50/50 desktop */
-.hero{max-width:none;margin:0}
-.hero-inner{
+/* CONTACT HERO */
+.contact-hero{
   display:grid;grid-template-columns:1fr 1fr;gap:0;
-  border-bottom:1px solid var(--lg);min-height:88vh;
+  border-bottom:1px solid var(--lg);min-height:80vh;
 }
-.hero-left{padding:5rem 3rem 5rem var(--pad);display:flex;flex-direction:column;justify-content:center}
-.hero-h1{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:900;line-height:1.1;letter-spacing:-.025em;margin-bottom:1.5rem}
-.hero-h1 em{font-style:italic;font-weight:400}
-.hero-desc{font-size:.95rem;line-height:1.85;color:var(--dg);margin-bottom:1rem;max-width:480px}
-.hero-desc strong{color:var(--black);font-weight:700}
-.hero-aside{font-size:.82rem;color:var(--dg);line-height:1.9;margin-bottom:1.5rem}
-.hero-aside strong{color:var(--black);font-weight:700}
-.hero-actions{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
-.hero-right{overflow:hidden;background:var(--off)}
-.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center 5%;display:block}
-
-/* BRAND LOGOS */
-.brand-sec{background:var(--white);padding:4rem var(--pad);border-top:1px solid var(--lg);border-bottom:1px solid var(--lg)}
-.brand-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:3fr 2fr;gap:4rem;align-items:center}
-.brand-grid-3x3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.brand-tile{
-  aspect-ratio:1.65;border-radius:var(--r);background:var(--off);
-  display:flex;align-items:center;justify-content:center;
-  padding:.75rem;transition:background .2s;overflow:hidden;
-  border:1px solid var(--black);
+.ch-left{padding:5rem 3rem 5rem 2rem;display:flex;flex-direction:column;justify-content:center}
+.ch-left .eye{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mg);margin-bottom:1rem}
+.ch-left h1{font-family:var(--serif);font-size:clamp(2.5rem,5vw,5rem);font-weight:900;line-height:1.08;letter-spacing:-.025em;margin-bottom:2rem}
+.ch-left h1 em{font-style:italic}
+.ch-left p{font-size:.95rem;line-height:1.8;color:var(--dg);margin-bottom:.6rem;max-width:460px}
+.ch-left a.email{
+  font-family:var(--serif);font-size:1.4rem;font-style:italic;
+  border-bottom:2px solid var(--black);padding-bottom:2px;display:inline-block;margin:1rem 0 1.5rem;
 }
-.brand-tile:hover{background:#e5e2dd}
-.brand-tile img{
-  height:50%;width:auto;max-width:85%;
-  object-fit:contain;display:block;margin:0 auto;
+.ch-left a.email:hover{opacity:.55}
+.contact-links{display:flex;flex-direction:column;gap:0;margin-bottom:2rem}
+.contact-links a{
+  font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;
+  padding:1rem 0;border-bottom:1px solid var(--lg);
+  display:flex;justify-content:space-between;align-items:center;color:var(--dg);
+  transition:color .15s;
 }
-.brand-tile img.logo-lg{height:62.5%}
-.brand-tile img.logo-lg{
-  height:62.5%;
-}
-.brand-right h2{font-family:var(--serif);font-size:clamp(1.9rem,3.5vw,3rem);font-weight:900;line-height:1.12;margin-bottom:.9rem;letter-spacing:-.02em}
-.brand-right h2 em{font-style:italic}
-.brand-right p{font-size:.92rem;color:var(--dg);line-height:1.75;margin-bottom:1.4rem;max-width:380px}
+.contact-links a:first-child{border-top:1px solid var(--lg)}
+.contact-links a:hover{color:var(--black)}
+.contact-links a::after{content:'↗';font-style:normal;font-weight:300}
+.services-list{margin-top:2rem}
+.services-list p{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mg);margin-bottom:.75rem}
+.services-list ul{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.services-list ul li{font-size:.85rem;color:var(--dg)}
+.services-list ul li::before{content:'→ ';color:var(--mg)}
+.ch-right{overflow:hidden;background:var(--off)}
+.ch-right-img{width:100%;height:100%;object-fit:cover;object-position:center 10%}
 
-/* ABOUT */
-#about{scroll-margin-top:calc(var(--nav) + 8px)}
-.about-full{padding:4rem var(--pad);max-width:1140px;margin:0 auto;border-bottom:1px solid var(--lg)}
-.about-full .eye{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mg);margin-bottom:.9rem}
-.about-full h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-.025em;margin-bottom:2.5rem;max-width:900px}
-.about-full h2 em{font-style:italic}
-.about-cols{display:grid;grid-template-columns:1fr 1fr;gap:5rem}
-.about-col .label{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mg);margin-bottom:1rem;display:block;font-weight:600}
-.about-col ul{list-style:none;display:flex;flex-direction:column;gap:.65rem}
-.about-col ul li{font-size:.92rem;line-height:1.75;color:var(--dg);padding-left:1.2rem;position:relative}
-.about-col ul li::before{content:'·';position:absolute;left:0;color:var(--mg);font-size:1.2rem;line-height:1.2}
+.footer{background:var(--black);color:var(--white);position:relative;overflow:hidden}
+.footer-img{width:100%;height:380px;object-fit:cover;object-position:center 20%;opacity:.3;display:block}
+.footer-body{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:4rem;padding:3.5rem 2rem;align-items:end}
+.footer-l h2{font-family:var(--serif);font-size:clamp(2.2rem,4vw,4rem);font-weight:900;line-height:1.08;letter-spacing:-.025em}
+.footer-l h2 em{font-style:italic}.footer-l .up{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.75rem}
+.footer-r{text-align:right}.footer-r h3{font-family:var(--serif);font-size:1.8rem;font-style:italic;margin-bottom:.3rem}
+.footer-r p{font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:1rem}
+.footer-links{display:flex;gap:1.25rem;justify-content:flex-end}
+.footer-links a{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:2px}
+.footer-links a:hover{color:var(--white)}
+.footer-bot{padding:.9rem 2rem;background:var(--black);display:flex;justify-content:space-between;font-size:.68rem;color:rgba(255,255,255,.25);border-top:1px solid rgba(255,255,255,.07)}
 
-/* WORK */
-#work{scroll-margin-top:calc(var(--nav) + 8px)}
-.sec-hdr{display:flex;justify-content:space-between;align-items:baseline;padding:3rem var(--pad) 1.25rem;max-width:1140px;margin:0 auto;border-top:1px solid var(--lg)}
-.sec-hdr h2{font-family:var(--serif);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;letter-spacing:-.02em}
-.work-cards{max-width:1140px;margin:0 auto;padding:0 var(--pad) 4rem;display:flex;flex-direction:column;gap:var(--gap)}
-
-.wcard{display:grid;gap:var(--gap);border-radius:var(--r);overflow:hidden;margin:0}
-.wcard:hover .wm img,.wcard:hover .wm video{transform:scale(1.02)}
-.wm{border-radius:var(--r);overflow:hidden;background:var(--off)}
-.wm video,.wm img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
-/* Text box: same height as media via align-items:stretch on grid */
-.wi{
-  border-radius:var(--r);background:var(--white);border:1px solid var(--lg);
-  padding:2rem 1.75rem;display:flex;flex-direction:column;justify-content:center;
-}
-.wi-title{font-family:var(--serif);font-size:clamp(1.65rem,2.4vw,2.42rem);font-weight:900;line-height:1.1;letter-spacing:-.02em;margin-bottom:.99rem}
-.wi-title em{font-style:italic;font-weight:400}
-.wi-desc{font-size:.924rem;line-height:1.8;color:var(--dg);margin-bottom:.99rem}
-.wi-stats{display:flex;gap:1.5rem;padding:1rem 0;border-top:1px solid var(--lg);flex-wrap:wrap}
-.stat-n{font-family:var(--serif);font-size:1.98rem;font-weight:900;line-height:1}
-.stat-l{font-size:.638rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mg);margin-top:.15rem;font-weight:500}
-
-/* Crema: 75% media left, 25% text right */
-.wcard-crema{grid-template-columns:3fr 1fr;align-items:stretch}
-.wcard-crema .wm{aspect-ratio:16/9}
-/* 75% media left, 25% text right */
-.wcard-ml{grid-template-columns:3fr 1fr;align-items:stretch}
-.wcard-ml .wm{aspect-ratio:16/9}
-/* 25% text left, 75% media right */
-.wcard-mr{grid-template-columns:1fr 3fr;align-items:stretch}
-.wcard-mr .wm{aspect-ratio:16/9}
-
-/* RESUME */
-#resume{scroll-margin-top:calc(var(--nav) + 8px)}
-.timeline{padding:4rem var(--pad);max-width:1140px;margin:0 auto;border-bottom:1px solid var(--lg)}
-.timeline h2{font-family:var(--serif);font-size:clamp(1.65rem,2.75vw,2.2rem);font-weight:900;letter-spacing:-.02em;margin-bottom:1.75rem}
-.trow{display:grid;grid-template-columns:200px 1fr;gap:2rem;padding:5px 0;border-bottom:1px solid var(--lg)}
-.tdate{font-size:.84rem;color:var(--mg);padding-top:5px;line-height:1.5}
-.tinfo{display:flex;flex-direction:column;gap:.2rem;padding:5px 0}
-.tco{font-weight:700;font-size:1.02rem}
-.trole{font-size:.88rem;color:var(--mg);margin-bottom:.35rem}
-.tbul{list-style:none;display:flex;flex-direction:column;gap:.3rem}
-.tbul li{font-size:.88rem;color:var(--dg);padding-left:1rem;position:relative}
-.tbul li::before{content:'·';position:absolute;left:0;color:var(--mg);font-size:1.1rem;line-height:1.2}
-.skills-wrap{padding:4rem var(--pad);max-width:1140px;margin:0 auto;border-bottom:1px solid var(--lg)}
-.skills-wrap h2{font-family:var(--serif);font-size:1.49rem;font-weight:900;margin-bottom:1.75rem}
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
-.skill-col h3{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-bottom:.9rem}
-.skill-col ul{list-style:none}
-.skill-col ul li{font-size:.93rem;color:var(--dg);padding:5px 0;border-bottom:1px solid var(--lg)}
-.edu-wrap{padding:4rem var(--pad);max-width:1140px;margin:0 auto;border-bottom:1px solid var(--lg)}
-.edu-wrap h2{font-family:var(--serif);font-size:1.49rem;font-weight:900;margin-bottom:1.75rem}
-.edu-row{display:grid;grid-template-columns:200px 1fr;gap:2rem;padding:5px 0;border-bottom:1px solid var(--lg)}
-.edu-location{font-size:.84rem;color:var(--mg);padding-top:5px}
-.edu-info{padding:5px 0;display:flex;flex-direction:column;gap:.15rem}
-.edu-program{font-weight:700;font-size:1.02rem;color:var(--black)}
-.edu-school{font-size:.84rem;color:var(--mg)}
-
-/* FOOTER — same structure as invest but with color hero image */
-.footer{background:#000;color:var(--white);position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.08)}
-.footer-img{width:100%;height:420px;object-fit:cover;object-position:center 5%;opacity:.25;display:block;filter:grayscale(20%)}
-.footer-body{
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;justify-content:space-between;
-  padding:3.5rem var(--pad) 10px;
-}
-.footer-l{text-align:left}
-.footer-l .up{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.65rem;display:block;font-weight:600}
-.footer-l h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.8rem);font-weight:900;line-height:1.08;letter-spacing:-.025em}
-.footer-l h2 em{font-style:italic}
-.footer-icons-center{display:flex;justify-content:center;gap:1.5rem;padding-bottom:10px}
-.f-icon-wrap{display:flex;flex-direction:column;align-items:center;gap:.45rem}
-.f-icon{
-  width:50px;height:50px;
-  border:2px solid rgba(255,255,255,.5);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  color:rgba(255,255,255,.7);transition:all .22s;
-}
-.f-icon:hover{background:rgba(255,255,255,.15);color:var(--white);border-color:var(--white)}
-.f-icon svg{width:18px;height:18px;fill:currentColor}
-.f-icon-label{font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);text-align:center;white-space:nowrap;font-weight:700}
-.footer-bot{padding:.8rem var(--pad);background:#000;display:flex;justify-content:space-between;font-size:.66rem;color:rgba(255,255,255,.2);border-top:1px solid rgba(255,255,255,.07)}
-
-/* RESPONSIVE */
 @media(max-width:900px){
-  .nav-links{display:none}
-  .hamburger{display:flex}
-  /* Hero mobile: stacked, image below title */
-  .hero-inner{grid-template-columns:1fr;min-height:auto}
-  .hero-left{padding:2rem var(--pad) 1rem}
-  .hero-h1{font-size:clamp(1.8rem,6vw,2.4rem)}
-  .hero-desc{max-width:none}
-  .hero-right{height:65vw;max-height:420px}
-  .about-full{padding:2.5rem var(--pad)}
-  .about-cols{grid-template-columns:1fr;gap:2rem}
-  .brand-inner{grid-template-columns:1fr;gap:2rem}
-  .brand-sec{padding:2.5rem var(--pad)}
-  .timeline,.skills-wrap,.edu-wrap{padding:2.5rem var(--pad)}
-  .trow{grid-template-columns:1fr;gap:.2rem}
-  .edu-row{grid-template-columns:1fr;gap:.2rem}
-  .skills-grid{grid-template-columns:1fr;gap:1.25rem}
-  .sec-hdr,.work-cards{padding-left:var(--pad);padding-right:var(--pad)}
-  /* Work cards: stack, image always first */
-  .wcard-crema,.wcard-ml,.wcard-mr{grid-template-columns:1fr;align-items:unset}
-  .wcard-crema .wm,.wcard-ml .wm,.wcard-mr .wm{aspect-ratio:16/9;order:-1}
-  /* Footer mobile: title left, icons centered bottom */
-  .footer-body{padding:2.5rem var(--pad) 10px}
-  .footer-l h2{font-size:clamp(1.8rem,7vw,2.8rem)}
-  .footer-bot{display:none}
+  .nav{padding:0 1.25rem}.nav-links li:not(:last-child):not(:nth-last-child(2)){display:none}
+  .contact-hero{grid-template-columns:1fr;min-height:auto}
+  .ch-right{height:280px}.ch-left{padding:3rem 1.25rem}
+  .footer-body{grid-template-columns:1fr}.footer-r{text-align:left}.footer-links{justify-content:flex-start}
 }
 </style>
 </head>
 <body>
-
 <nav class="nav">
   <a href="/vaelyn/index.html" class="nav-logo">
-    <div class="nav-logo-mark"><img src="/vaelyn/assets/images/logo_black.png" alt="VH"/></div>
-    <div class="nav-logo-text">
-      <span class="sub">Business Strategy</span>
-      <span class="name">Vaelyn Hargrave</span>
-    </div>
+    <div class="nav-logo-mark">V</div>
+    <div class="nav-logo-text"><span class="sub">Strategist</span><span class="name">Vaelyn Hargrave</span></div>
   </a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#resume">Resume</a></li>
+    <li><a href="/vaelyn/index.html#work">Work</a></li>
+    <li><a href="/vaelyn/index.html#about">About</a></li>
     <li><a href="/vaelyn/invest/index.html">Invest</a></li>
-    <li><a href="mailto:inquiries@vaelynhargrave.com" class="nav-cta">WORK WITH ME</a></li>
+    <li><a href="/cdn-cgi/l/email-protection#caa3a4bbbfa3b8a3afb98abcabafa6b3a4a2abb8adb8abbcafe4a9a5a7" class="nav-cta">WORK WITH ME</a></li>
   </ul>
-  <button class="hamburger" id="ham" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-items">
-    <a href="#about" class="mobile-item" onclick="closeMenu()">
-      <img src="/vaelyn/assets/images/hero_color.jpg" alt="" style="object-position:center 15%"/>
-      <span class="mobile-item-label">About</span>
-    </a>
-    <a href="#work" class="mobile-item" onclick="closeMenu()">
-      <img src="/vaelyn/assets/images/via_1.jpg" alt=""/>
-      <span class="mobile-item-label">Work</span>
-    </a>
-    <a href="#resume" class="mobile-item" onclick="closeMenu()">
-      <img src="/vaelyn/assets/images/work_image.jpg" alt=""/>
-      <span class="mobile-item-label">Resume</span>
-    </a>
-    <a href="/vaelyn/invest/index.html" class="mobile-item invest-item" onclick="closeMenu()">
-      <img src="/vaelyn/assets/images/book_consult.jpg" alt=""/>
-      <span class="mobile-item-label">Invest</span>
-    </a>
-    <a href="mailto:inquiries@vaelynhargrave.com" class="mobile-item cta-item">
-      <span class="mobile-item-label">Work With Me</span>
-    </a>
-  </div>
-</div>
-
 <div class="page">
 
-<!-- HERO — invest-style layout, color photo, home page copy -->
-<div class="hero fu">
-  <div class="hero-inner">
-    <div class="hero-left">
-      <h1 class="hero-h1">Hi, I'm Vaelyn &mdash; <em>CPG strategist</em> and category leader for brands that want to grow.</h1>
-      <p class="hero-desc">I recently led product commercialization at <strong>Nestlé &mdash; Starbucks and Nestlé Coffee Partners</strong>, managing a $200M portfolio across Walmart, Target, Costco, Sam's Club, and Amazon. I launched the Starbucks Crema Collection (Feb 2025), drove a $1.2M Sam's Club expansion, and built the infrastructure that makes future launches faster.</p>
-      <div class="hero-aside">
-        <strong>$200M+</strong> CPG portfolio managed<br>
-        <strong>7+ years</strong> across mass, club, eComm and DTC<br>
-        <strong>3 launches</strong> from concept to shelf in 2024&ndash;25
-      </div>
-      <div class="hero-actions">
-        <a href="#work" class="btn-red">See my work</a>
-        <a href="#about" class="btn-arrow">Meet Vaelyn &rarr;</a>
-      </div>
+<div class="contact-hero">
+  <div class="ch-left fu">
+    <p class="eye">Contact</p>
+    <h1>Let's build<br><em>something</em><br>great.</h1>
+    <p>Open to strategic consulting, fractional category leadership, product commercialization, and CPG M&amp;A advisory.</p>
+    <a href="/cdn-cgi/l/email-protection#b0d9dec1c5d9c2d9d5c3f0c6d1d5dcc9ded8d1c2d7c2d1c6d59ed3dfdd" class="email"><span class="__cf_email__" data-cfemail="cea7a0bfbba7bca7abbd8eb8afaba2b7a0a6afbca9bcafb8abe0ada1a3">[email&#160;protected]</span></a>
+    <p style="font-size:.78rem;color:var(--mg);margin-bottom:1.5rem">Seattle, WA — available for remote and on-site engagements</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/vaelynhargrave/" target="_blank">LinkedIn</a>
+      <a href="/vaelyn/invest/index.html">Schedule a call</a>
+      <a href="/vaelyn/work/index.html">View work</a>
     </div>
-    <div class="hero-right">
-      <img src="/vaelyn/assets/images/hero_color.jpg" alt="Vaelyn Hargrave"/>
+    <div class="services-list">
+      <p>What I work on</p>
+      <ul>
+        <li>CPG product strategy &amp; commercialization</li>
+        <li>Category management &amp; P&amp;L ownership</li>
+        <li>eCommerce merchandising &amp; GTM</li>
+        <li>Brand re-launch &amp; innovation pipelines</li>
+        <li>M&amp;A advisory &amp; brand evaluation</li>
+        <li>Executive business reviews &amp; reporting</li>
+      </ul>
     </div>
+  </div>
+  <div class="ch-right fu">
+    <img class="ch-right-img" src="/vaelyn/assets/images/hero_color.jpg" alt="Vaelyn Hargrave"/>
   </div>
 </div>
 
-<!-- BRAND LOGOS -->
-<div class="brand-sec fu">
-  <div class="brand-inner">
-    <div class="brand-grid-3x3">
-      <div class="brand-tile"><img src="/vaelyn/assets/logos/starbucks.png" alt="Starbucks" class="logo-lg"/></div>
-      <div class="brand-tile"><img src="/vaelyn/assets/logos/nestle.png" alt="Nestlé" class="logo-lg"/></div>
-      <div class="brand-tile"><img src="/vaelyn/assets/logos/sbc.png" alt="Seattle's Best Coffee"/></div>
-      <div class="brand-tile"><img src="/vaelyn/assets/logos/pca.png" alt="PCA Skin"/></div>
-      <div class="brand-tile"><img src="/vaelyn/assets/logos/skinbetter.png" alt="Skin Better Science"/></div>
-      <div class="brand-tile"><img src="/vaelyn/assets/logos/janeiredale.png" alt="jane iredale"/></div>
-      <div class="brand-tile"><img src="/vaelyn/assets/logos/beechers.png" alt="Beecher's Handmade Cheese"/></div>
-      <div class="brand-tile"><img src="/vaelyn/assets/logos/trident.png" alt="Trident Seafoods"/></div>
-      <div class="brand-tile"><img src="/vaelyn/assets/logos/ferndale.png" alt="Ferndale Market"/></div>
-    </div>
-    <div class="brand-right">
-      <h2>I <em>transform</em> brands.</h2>
-      <p>From category strategy to full-funnel product commercialization. I define, launch, and scale ideas that unlock durable, repeatable revenue.</p>
-      <a href="mailto:inquiries@vaelynhargrave.com" class="btn-red">Work With Me</a>
-    </div>
-  </div>
-</div>
-
-<!-- ABOUT -->
-<div id="about">
-  <div class="about-full fu">
-    <p class="eye">About</p>
-    <h2>Vaelyn is a strategist, builder, and operator. <em>Data connects to growth.</em></h2>
-    <div class="about-cols">
-      <div class="about-col">
-        <span class="label">Background</span>
-        <ul>
-          <li>Grew up in the Pacific Northwest surrounded by coffee culture, always drawn to the intersection of data and story: why do some products win on shelf while others sit?</li>
-          <li>Led product commercialization at Nestlé managing a $200M CPG portfolio across mass, food, eCommerce, club, and value channels.</li>
-          <li>7+ years across every stage from scrappy DTC startups to global CPG. One consistent output: growth that compounds.</li>
-        </ul>
-      </div>
-      <div class="about-col">
-        <span class="label">What I Bring</span>
-        <ul>
-          <li>Sharp category analytics using Circana/IRI, Stackline, and PowerBI combined with a merchant's instinct for what actually moves product.</li>
-          <li>Cross-functional operator who can build the infrastructure and move fast, from innovation brief to final shelf placement.</li>
-          <li>Unique edge across both 6-figure brand builds and $200M portfolio management, knowing exactly what each stage needs.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- WORK SECTION -->
-<div id="work">
-  <div class="sec-hdr fu"><h2>Selected Work</h2></div>
-  <div class="work-cards">
-
-    <!-- 1. Crema: video 75% left, text 25% right -->
-    <div class="wcard wcard-crema fu">
-      <div class="wm">
-        <video autoplay muted loop playsinline>
-          <source src="/vaelyn/assets/videos/crema.mp4" type="video/mp4">
-          <img src="/vaelyn/assets/images/crema_1.jpg" alt="Starbucks Crema Collection"/>
-        </video>
-      </div>
-      <div class="wi">
-        <h3 class="wi-title">Starbucks Crema<br><em>Collection</em></h3>
-        <p class="wi-desc">Launched the Starbucks Premium Instant Crema Collection across mass, food, eCommerce, club, and value channels. Owned P&amp;L, forecasting, stage-gate management, and cross-functional GTM.</p>
-        <div class="wi-stats">
-          <div><p class="stat-n">$200M</p><p class="stat-l">Portfolio</p></div>
-          <div><p class="stat-n">5+</p><p class="stat-l">Channels</p></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2. Three flavors: text 25% left, image 75% right -->
-    <div class="wcard wcard-mr fu">
-      <div class="wi">
-        <h3 class="wi-title">Three <em>flavors,</em><br>one launch.</h3>
-        <p class="wi-desc">Molten Chocolate, Salted Caramel, Madagascar Vanilla. Each SKU managed from innovation brief through final shelf placement across 5+ channels with separate demand forecasts per retailer.</p>
-      </div>
-      <div class="wm">
-        <img src="/vaelyn/assets/images/crema_3.jpg" alt="Crema three flavors" style="object-position:center 30%"/>
-      </div>
-    </div>
-
-    <!-- 3. SBC Pipeline: image 75% left, text 25% right -->
-    <div class="wcard wcard-ml fu">
-      <div class="wm">
-        <img src="/vaelyn/assets/images/sbc_new.jpg" alt="Seattle's Best new packaging"/>
-      </div>
-      <div class="wi">
-        <h3 class="wi-title">5 Year Innovation<br><em>Pipeline</em></h3>
-        <p class="wi-desc">Analyzed financial viability of flavors innovation pipeline for Seattle's Best Coffee. Launched the packaging rebrand and cross-functional transition timeline across all 30 eCommerce, food, mass, club, and value channels.</p>
-      </div>
-    </div>
-
-    <!-- 4. New flavors: text 25% left, image 75% right -->
-    <div class="wcard wcard-mr fu">
-      <div class="wi">
-        <h3 class="wi-title">New flavors,<br><em>new channels.</em></h3>
-        <p class="wi-desc">Launched the new "Lighthouse" light roast and two new flavors "Sea Salt Toffee" and "Campfire S'mores." Oversaw new item forecast projections (NIFs) for K-Cup and Ground formats across all 20 channels.</p>
-      </div>
-      <div class="wm">
-        <img src="/vaelyn/assets/images/sbc_1.jpg" alt="Seattle's Best Light Roast" style="object-position:center 40%"/>
-      </div>
-    </div>
-
-    <!-- 5. Instant done right: image 75% left, text 25% right -->
-    <div class="wcard wcard-ml fu">
-      <div class="wm">
-        <img src="/vaelyn/assets/images/via_1.jpg" alt="Starbucks VIA" style="object-position:center 40%"/>
-      </div>
-      <div class="wi">
-        <h3 class="wi-title">Instant done<br><em>right.</em></h3>
-        <p class="wi-desc">Managed VIA&reg; packaging updates and retailer-specific assortment plans for French Roast, Pike Place, Colombia, and more.</p>
-        <div class="wi-stats">
-          <div><p class="stat-n">$1.2M</p><p class="stat-l">Sam's Expansion</p></div>
-          <div><p class="stat-n">5+</p><p class="stat-l">Retailers</p></div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- RESUME -->
-<div id="resume">
-  <div class="timeline fu">
-    <h2>7+ years building brands and categories.</h2>
-    <div class="trow"><div class="tdate">Jan 2026 &ndash; Present</div><div class="tinfo"><span class="tco">Dr. Anne Association</span><span class="trole">Director, Board of Directors &nbsp;&middot;&nbsp; Seattle, WA</span><ul class="tbul"><li>Led GTM strategy and website redesign, boosting monthly traffic 75%</li><li>CRM setup (Mailchimp + HubSpot) and LinkedIn automation via Dripify/Expandi</li></ul></div></div>
-    <div class="trow"><div class="tdate">Oct 2024 &ndash; 2026</div><div class="tinfo"><span class="tco">Nestlé &mdash; Starbucks and Nestlé Coffee Partners</span><span class="trole">Program Analyst, Product Dev and Commercialization &nbsp;&middot;&nbsp; Seattle, WA</span><ul class="tbul"><li>Managed $200M CPG portfolio across mass, food, eComm, club and value</li><li>Launched Starbucks Crema Collection and Seattle's Best re-brand (Feb 2025)</li><li>Led $1.2M Sam's Club assortment expansion</li><li>Built NIF dashboard, reduced reporting time 35% and overstock 8%</li></ul></div></div>
-    <div class="trow"><div class="tdate">2024</div><div class="tinfo"><span class="tco">Gift Horse Gems</span><span class="trole">Senior Category Manager &nbsp;&middot;&nbsp; Seattle, WA</span><ul class="tbul"><li>+225% MoM website traffic through UI overhaul and global sourcing</li><li>Cut material costs 20% through global vendor diversification</li></ul></div></div>
-    <div class="trow"><div class="tdate">2023 &ndash; 2024</div><div class="tinfo"><span class="tco">Skin Addiction</span><span class="trole">Director of Category Management &nbsp;&middot;&nbsp; Seattle, WA</span><ul class="tbul"><li>+25% sales conversion YoY, 14% reduction in operating costs</li><li>+90% monthly traffic from website redesign and A/B testing</li><li>+40% time-on-site from UGC strategy</li></ul></div></div>
-    <div class="trow"><div class="tdate">2021 &ndash; 2023</div><div class="tinfo"><span class="tco">Crowd Cow</span><span class="trole">Category Manager and Acting Digital Merchandising Manager &nbsp;&middot;&nbsp; Seattle, WA</span><ul class="tbul"><li>35% YoY category margin growth, 40,000+ SKUs managed</li><li>Shopify, Contentful, Figma &nbsp;&middot;&nbsp; Onboarding cut from 6 weeks to 1&ndash;2 weeks</li></ul></div></div>
-    <div class="trow"><div class="tdate">2021</div><div class="tinfo"><span class="tco">Zulily</span><span class="trole">Buyer &nbsp;&middot;&nbsp; Seattle, WA</span><ul class="tbul"><li>Exceeded quarterly sales goal by 22%</li></ul></div></div>
-    <div class="trow"><div class="tdate">2017 &ndash; 2021</div><div class="tinfo"><span class="tco">Nordstrom / AMS / Advantage Solutions</span><span class="trole">Field Sales Coordinator and Field Sales Manager &nbsp;&middot;&nbsp; Seattle, WA</span><ul class="tbul"><li>+28% sales ratio YoY at Nordstrom</li></ul></div></div>
-  </div>
-  <div class="skills-wrap fu">
-    <h2>Skills and Tools</h2>
-    <div class="skills-grid">
-      <div class="skill-col"><h3>Sales and P&amp;L</h3><ul><li>Executive business reviews</li><li>Assortment strategy</li><li>Margin and profitability analysis</li><li>Trade spend optimization</li><li>Price and payment negotiation</li><li>Promotional planning</li></ul></div>
-      <div class="skill-col"><h3>Data and Operations</h3><ul><li>PowerBI, Circana/IRI, Stackline</li><li>Tableau, Excel, Google Sheets</li><li>Demand and supply forecasting</li><li>Stage-gate process management</li><li>Asana, Smartsheet, Confluence</li></ul></div>
-      <div class="skill-col"><h3>Digital and eCommerce</h3><ul><li>SEO and A/B testing</li><li>Shopify, Figma, Contentful</li><li>Wordpress, GitHub</li><li>HubSpot, Mailchimp</li><li>AI and agentic automation</li><li>UX research and sprint planning</li></ul></div>
-    </div>
-  </div>
-  <div class="edu-wrap fu">
-    <h2>Education</h2>
-    <div class="edu-row" style="border-top:1px solid var(--lg)">
-      <div class="edu-location">Bellevue, WA</div>
-      <div class="edu-info">
-        <span class="edu-program">Entrepreneurship and Product Development &nbsp;&middot;&nbsp; Product Development and Innovation</span>
-        <span class="edu-school">Bellevue College</span>
-      </div>
-    </div>
-    <div class="edu-row">
-      <div class="edu-location">Spokane, WA</div>
-      <div class="edu-info">
-        <span class="edu-program">Marketing and Design</span>
-        <span class="edu-school">Spokane Falls Community College</span>
-      </div>
-    </div>
-    <div class="edu-row">
-      <div class="edu-location">Duvall, WA</div>
-      <div class="edu-info">
-        <span class="edu-program">Design and Branding</span>
-        <span class="edu-school">School of Art and Innovation</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER — invest-style with color hero image -->
 <footer class="footer">
-  <img class="footer-img" src="/vaelyn/assets/images/hero_color.jpg" alt="" aria-hidden="true"/>
+  <img class="footer-img" src="/vaelyn/assets/images/hero_bw.jpg" alt="" aria-hidden="true"/>
   <div class="footer-body">
-    <div class="footer-l">
-      <p class="up">Work with me</p>
-      <h2>New opportunities<br><em>together.</em></h2>
-    </div>
-    <div class="footer-icons-center">
-      <div class="f-icon-wrap">
-        <a href="https://www.linkedin.com/in/vaelynhargrave/" target="_blank" class="f-icon" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-        <span class="f-icon-label">LinkedIn</span>
-      </div>
-      <div class="f-icon-wrap">
-        <a href="https://vaelynhargrave.setmore.com/" target="_blank" class="f-icon" aria-label="Book Now">
-          <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
-        </a>
-        <span class="f-icon-label">Book Now</span>
-      </div>
-      <div class="f-icon-wrap">
-        <a href="mailto:inquiries@vaelynhargrave.com" class="f-icon" aria-label="Email Me">
-          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        </a>
-        <span class="f-icon-label">Email Me</span>
-      </div>
-    </div>
+    <div class="footer-l"><p class="up">↓ Send a message</p><h2>Let's build<br><em>something</em><br>great.</h2></div>
+    <div class="footer-r"><h3>Connect</h3><p>Seattle, WA<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="70191e01051902191503300611151c091e18110217021106155e131f1d">[email&#160;protected]</a></p><div class="footer-links"><a href="https://www.linkedin.com/in/vaelynhargrave/" target="_blank">LinkedIn</a></div></div>
   </div>
-  <div class="footer-bot">
-    <span>&copy; 2026 Vaelyn Hargrave. Seattle, WA.</span>
-    <span>CPG Strategy &nbsp;&middot;&nbsp; Category Management &nbsp;&middot;&nbsp; M&amp;A Advisory</span>
-  </div>
-</footer>
-
-</div>
-<script>
-var ham=document.getElementById('ham'),menu=document.getElementById('mobileMenu');
-function closeMenu(){menu.classList.remove('open');ham.classList.remove('open');document.body.style.overflow=''}
-ham.addEventListener('click',function(){var o=menu.classList.toggle('open');ham.classList.toggle('open');document.body.style.overflow=o?'hidden':''});
-(function(){
-  
-</body>
-</html>
+  <div class="footer-bot"><span>© 2026 Vaelyn Hargrave. Seattle, WA.</span><span>CPG Strategy · Category Management · M&amp;A Advisory</span></div>
+</foot
