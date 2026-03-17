@@ -22,8 +22,7 @@ img,video{display:block;max-width:100%}
 /* NAV */
 .nav{position:fixed;top:0;left:0;right:0;z-index:300;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);background:rgba(0,0,0,.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.1)}
 .nav-logo{display:flex;align-items:center;gap:.55rem}
-.nav-logo-mark{width:34px;height:34px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.nav-logo-mark img{width:100%;height:100%;object-fit:contain;display:block}
+.nav-logo-mark{width:34px;height:34px;border:1.5px solid var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.8rem;font-weight:700;flex-shrink:0;color:var(--white)}
 .nav-logo-text{display:flex;flex-direction:column;line-height:1.2}
 .nav-logo-text .sub{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5)}
 .nav-logo-text .name{font-size:.82rem;font-weight:600;color:var(--white)}
@@ -134,7 +133,7 @@ img,video{display:block;max-width:100%}
 <body>
 <nav class="nav">
   <a href="/vaelyn/index.html" class="nav-logo">
-    <div class="nav-logo-mark"><img src="/vaelyn/assets/images/logo_white.png" alt="VH"/></div>
+    <div class="nav-logo-mark">V</div>
     <div class="nav-logo-text"><span class="sub">Business Strategy</span><span class="name">Vaelyn Hargrave</span></div>
   </a>
   <ul class="nav-links">
@@ -262,6 +261,12 @@ img,video{display:block;max-width:100%}
 <script>
 var ham=document.getElementById('ham'),menu=document.getElementById('mobileMenu');
 function closeMenu(){menu.classList.remove('open');ham.classList.remove('open');document.body.style.overflow=''}
-ham.addEventListener('click',function(){var o=menu.classList.toggle('open');ham.classList.toggle('open');document.b
+ham.addEventListener('click',function(){var o=menu.classList.toggle('open');ham.classList.toggle('open');document.body.style.overflow=o?'hidden':''});
+(function(){
+  var els=document.querySelectorAll('.fu');
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{threshold:.06,rootMargin:'0px 0px -20px 0px'});
+  els.forEach(function(el){io.observe(el)});
+})();
+</script>
 </body>
 </html>
