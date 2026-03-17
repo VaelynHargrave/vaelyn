@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Invest — Vaelyn Hargrave</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#111;--white:#fff;--off:#f5f4f1;--lg:#e8e8e8;--mg:#999;--dg:#444;--red:#e02020;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --nav:68px;--pad:10px;--r:10px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:#000;color:var(--white);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,video{display:block;max-width:100%}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:300;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);background:rgba(0,0,0,.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.1)}
+.nav-logo{display:flex;align-items:center;gap:.55rem}
+.nav-logo-mark{width:36px;height:36px;flex-shrink:0;display:flex;align-items:center;justify-content:center}.nav-logo-mark img{width:100%;height:100%;object-fit:contain;display:block}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.2}
+.nav-logo-text .sub{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.nav-logo-text .name{font-size:.82rem;font-weight:600;color:var(--white)}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none}
+.nav-links a{font-size:.78rem;font-weight:400;color:rgba(255,255,255,.6);transition:color .15s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--red)!important;color:var(--white)!important;padding:.42rem 1rem;border-radius:2rem;font-size:.7rem!important;letter-spacing:.06em;text-transform:uppercase;font-weight:700!important}
+.nav-cta:hover{background:#c01818!important}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* MOBILE MENU */
+.mobile-menu{display:none;position:fixed;inset:0;z-index:200;background:#eceae7;flex-direction:column;padding:calc(var(--nav) + 4px) 8px 8px}
+.mobile-menu.open{display:flex}
+.mobile-menu-items{display:flex;flex-direction:column;flex:1;gap:4px;overflow:hidden}
+.mobile-item{flex:1;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:.9rem 1rem;border-radius:var(--r);background:var(--white);min-height:0}
+.mobile-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--r);object-position:center center}
+.mobile-item.invest-item img{object-position:center bottom}
+.mobile-item-label{position:relative;z-index:1;font-family:var(--serif);font-size:1.85rem;font-weight:700;color:var(--white);line-height:1;text-shadow:0 2px 20px rgba(0,0,0,.75),0 1px 4px rgba(0,0,0,.5)}
+.mobile-item.cta-item{background:var(--red);flex:0 0 54px;align-items:center}
+.mobile-item.cta-item .mobile-item-label{font-family:var(--sans);font-size:.9rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;text-shadow:none}
+
+.page{padding-top:var(--nav)}
+.fu{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.fu.on{opacity:1;transform:translateY(0)}
+.btn-red{padding:.52rem 1.2rem;background:var(--red);color:var(--white);border-radius:2rem;font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;transition:background .2s;display:inline-block}
+.btn-red:hover{background:#c01818}
+.btn-white-out{padding:.52rem 1.2rem;border:1.5px solid rgba(255,255,255,.4);border-radius:2rem;font-size:.75rem;font-weight:500;color:rgba(255,255,255,.7);transition:all .2s;display:inline-block}
+.btn-white-out:hover{border-color:var(--white);color:var(--white)}
+
+/* HERO */
+.invest-hero{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid rgba(255,255,255,.1);min-height:88vh}
+.ih-left{padding:5rem 3rem 5rem var(--pad);display:flex;flex-direction:column;justify-content:center}
+.ih-left h1{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:900;line-height:1.1;letter-spacing:-.025em;margin-bottom:1.5rem;color:var(--white)}
+.ih-left h1 em{font-style:italic}
+.ih-left p{font-size:.95rem;line-height:1.85;color:rgba(255,255,255,.62);margin-bottom:1rem;max-width:480px}
+.ih-right{overflow:hidden;background:#1a1a1a}
+.ih-right img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+
+/* PILLARS */
+.pillars{border-bottom:1px solid rgba(255,255,255,.1)}
+.pillars-inner{display:grid;grid-template-columns:repeat(3,1fr);max-width:1120px;margin:0 auto;padding:0 var(--pad)}
+.pillar{padding:3rem 2rem 3rem 0;border-right:1px solid rgba(255,255,255,.1)}
+.pillar:last-child{border-right:none;padding-right:0;padding-left:2rem}
+.pillar:nth-child(2){padding-left:2rem}
+.p-num{font-family:var(--serif);font-size:3rem;font-weight:400;color:rgba(255,255,255,.12);margin-bottom:.65rem;line-height:1}
+.p-title{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-bottom:.65rem;color:rgba(255,255,255,.6)}
+.p-text{font-size:.86rem;line-height:1.75;color:rgba(255,255,255,.48)}
+
+/* CRITERIA */
+.criteria{display:grid;grid-template-columns:1fr 1fr;gap:5rem;padding:5rem var(--pad);max-width:1140px;margin:0 auto;border-bottom:1px solid rgba(255,255,255,.1);align-items:start}
+.criteria-left h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;line-height:1.2;letter-spacing:-.02em;margin-bottom:1rem;color:var(--white)}
+.criteria-left h2 em{font-style:italic}
+.criteria-left p{font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.82;margin-bottom:.75rem}
+.crit-row{padding:5px 0;border-bottom:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;align-items:baseline}
+.crit-row:first-of-type{border-top:1px solid rgba(255,255,255,.1)}
+.crit-label{font-size:.88rem;font-weight:500;color:var(--white);padding:5px 0}
+.crit-tag{font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+
+/* BOOKING */
+.booking{display:grid;grid-template-columns:1fr 1.5fr;gap:5rem;padding:5rem var(--pad);max-width:1140px;margin:0 auto;border-bottom:1px solid rgba(255,255,255,.1);align-items:start}
+.booking h2{font-family:var(--serif);font-size:clamp(1.8rem,2.8vw,2.4rem);font-weight:900;line-height:1.2;margin-bottom:1rem;color:var(--white)}
+.booking h2 em{font-style:italic}
+.booking p{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:.75rem}
+.setmore-frame{border:1px solid rgba(255,255,255,.12);border-radius:var(--r);overflow:hidden;background:#1a1a1a;height:560px}
+.setmore-frame iframe{width:100%;border:none;height:800px;display:block}
+
+/* FOOTER */
+.footer{background:#000;color:var(--white);position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.08)}
+.footer-img{width:100%;height:420px;object-fit:cover;object-position:center 15%;opacity:.2;display:block;filter:grayscale(60%)}
+.footer-body{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:3.5rem var(--pad) 10px;
+}
+.footer-l{text-align:left}
+.footer-l .up{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.65rem;display:block;font-weight:600}
+.footer-l h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.8rem);font-weight:900;line-height:1.08;letter-spacing:-.025em}
+.footer-l h2 em{font-style:italic}
+.footer-icons-center{display:flex;justify-content:center;gap:1.5rem;padding-bottom:10px}
+.f-icon-wrap{display:flex;flex-direction:column;align-items:center;gap:.45rem}
+.f-icon{
+  width:50px;height:50px;
+  border:2px solid rgba(255,255,255,.5);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.7);transition:all .22s;
+}
+.f-icon:hover{background:rgba(255,255,255,.15);color:var(--white);border-color:var(--white)}
+.f-icon svg{width:18px;height:18px;fill:currentColor}
+.f-icon-label{font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);text-align:center;white-space:nowrap;font-weight:700}
+.footer-bot{padding:.8rem var(--pad);background:#000;display:flex;justify-content:space-between;font-size:.66rem;color:rgba(255,255,255,.2);border-top:1px solid rgba(255,255,255,.06)}
+
+@media(max-width:900px){
+  .nav-links{display:none}.hamburger{display:flex}
+  .invest-hero{grid-template-columns:1fr;min-height:auto}
+  .ih-right{height:320px}.ih-left{padding:3rem var(--pad)}
+  .pillars-inner{grid-template-columns:1fr;padding:0 var(--pad)}
+  .pillar{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);padding:2rem 0!important}
+  .criteria,.booking{grid-template-columns:1fr;gap:2rem;padding:3rem var(--pad)}
+  .footer-body{padding:2.5rem var(--pad) 10px}
+  .footer-l h2{font-size:clamp(1.8rem,7vw,2.8rem)}
+  .footer-bot{display:none}
+}</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/vaelyn/index.html" class="nav-logo">
+    <div class="nav-logo-mark"><img src="/vaelyn/assets/logos/White_VH_Logo.png" alt="VH"/></div>
+    <div class="nav-logo-text"><span class="sub">Business Strategy</span><span class="name">Vaelyn Hargrave</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/vaelyn/index.html#about">About</a></li>
+    <li><a href="/vaelyn/index.html#work">Work</a></li>
+    <li><a href="/vaelyn/index.html#resume">Resume</a></li>
+    <li><a href="/vaelyn/invest/index.html">Invest</a></li>
+    <li><a href="/cdn-cgi/l/email-protection#3c55524d49554e55594f7c4a5d59504552545d4e5b4e5d4a59125f5351" class="nav-cta">WORK WITH ME</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-items">
+    <a href="/vaelyn/index.html#about" class="mobile-item" onclick="closeMenu()">
+      <img src="/vaelyn/assets/images/hero_color.jpg" alt="" style="object-position:center 15%"/>
+      <span class="mobile-item-label">About</span>
+    </a>
+    <a href="/vaelyn/index.html#work" class="mobile-item" onclick="closeMenu()">
+      <img src="/vaelyn/assets/images/via_1.jpg" alt=""/>
+      <span class="mobile-item-label">Work</span>
+    </a>
+    <a href="/vaelyn/index.html#resume" class="mobile-item" onclick="closeMenu()">
+      <img src="/vaelyn/assets/images/work_image.jpg" alt=""/>
+      <span class="mobile-item-label">Resume</span>
+    </a>
+    <a href="/vaelyn/invest/index.html" class="mobile-item invest-item" onclick="closeMenu()">
+      <img src="/vaelyn/assets/images/book_consult.jpg" alt=""/>
+      <span class="mobile-item-label">Invest</span>
+    </a>
+    <a href="/cdn-cgi/l/email-protection#a1c8cfd0d4c8d3c8c4d2e1d7c0c4cdd8cfc9c0d3c6d3c0d7c48fc2cecc" class="mobile-item cta-item">
+      <span class="mobile-item-label">Work With Me</span>
+    </a>
+  </div>
+</div>
+
+<div class="page">
+
+<div class="invest-hero fu">
+  <div class="ih-left">
+    <h1>Developing Partnerships, Mergers and Acquisitions in <em>CPG.</em></h1>
+    <p>My mission is to qualify and acquire emerging eCommerce and Retail Businesses, Brands, Intellectual Property, and Patents.</p>
+    <p>My process involves assessments of long-term market viability, supply chain resilience, and margin sustainability to distinguish brands with durable, repeatable earnings power from those reliant on transient frameworks and consumer sentiment. Let's forge a new opportunity together.</p>
+    <div style="display:flex;gap:.65rem;margin-top:1.25rem;flex-wrap:wrap">
+      <a href="#booking" class="btn-red">Schedule a Call</a>
+      <a href="/cdn-cgi/l/email-protection#2e47405f5b475c474b5d6e584f4b425740464f5c495c4f584b004d4143" class="btn-white-out">Email Vaelyn</a>
+    </div>
+  </div>
+  <div class="ih-right">
+    <img src="/vaelyn/assets/images/hero_bw.jpg" alt="Vaelyn Hargrave"/>
+  </div>
+</div>
+
+<div class="pillars fu">
+  <div class="pillars-inner">
+    <div class="pillar"><p class="p-num">01</p><p class="p-title">Unit Economics</p><p class="p-text">Evaluation of channel-level profitability, contribution margin, and unit-level economics to surface brands with structurally sound financials beyond top-line revenue.</p></div>
+    <div class="pillar"><p class="p-num">02</p><p class="p-title">Market Viability</p><p class="p-text">Assessment of long-term market position, supply chain resilience, and margin sustainability, distinguishing durable earnings power from trend-dependent brands.</p></div>
+    <div class="pillar"><p class="p-num">03</p><p class="p-title">Value Creation</p><p class="p-text">M&amp;A frameworks rooted in vertical integration, financial discipline, and speed to market, building confidence, flexibility, and compounding growth.</p></div>
+  </div>
+</div>
+
+<div class="criteria fu">
+  <div class="criteria-left">
+    <p style="font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:.75rem;font-weight:600">My Approach</p>
+    <h2>What makes a <em>qualified</em> CPG brand.</h2>
+    <p>I focus on brands that have already proven a market, with repeatable revenue, defensible channels, and the operational infrastructure to scale without breaking.</p>
+    <p>My background managing a $200M portfolio across Walmart, Target, Costco, Sam's Club, and Amazon gives me an operator's-eye view of what separates brands that last from those that plateau.</p>
+  </div>
+  <div>
+    <div class="crit-row"><span class="crit-label">Repeatable unit economics</span><span class="crit-tag">Core criteria</span></div>
+    <div class="crit-row"><span class="crit-label">Multi-channel distribution</span><span class="crit-tag">Core criteria</span></div>
+    <div class="crit-row"><span class="crit-label">Supply chain resilience</span><span class="crit-tag">Core criteria</span></div>
+    <div class="crit-row"><span class="crit-label">Operational infrastructure to scale</span><span class="crit-tag">Strong signal</span></div>
+    <div class="crit-row"><span class="crit-label">Durable margin profile</span><span class="crit-tag">Upside indicator</span></div>
+  </div>
+</div>
+
+<div class="booking fu" id="booking">
+  <div>
+    <p style="font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:.75rem;font-weight:600">Schedule a Call</p>
+    <h2>Ready to explore<br>a <em>partnership?</em></h2>
+    <p>Whether you're looking to sell a brand, acquire one, or explore strategic partnership opportunities, I would love to have a conversation. Book a time below to get started.</p>
+    <p>I work with founders, operators, and investors across the CPG spectrum, from early-stage brands with proven traction to established multi-channel businesses evaluating exits.</p>
+    <a href="/cdn-cgi/l/email-protection#096067787c607b606c7a497f686c65706761687b6e7b687f6c276a6664" class="btn-red" style="margin-top:1rem">Email to Schedule</a>
+  </div>
+  <div class="setmore-frame">
+    <iframe src="https://vaelynhargrave.setmore.com/" title="Schedule with Vaelyn Hargrave" allow="payment" loading="lazy" scrolling="no"></iframe>
+  </div>
+</div>
+
+<footer class="footer">
+  <img class="footer-img" src="/vaelyn/assets/images/hero_bw.jpg" alt="" aria-hidden="true"/>
+  <div class="footer-body">
+    <div class="footer-l">
+      <p class="up">Work with me</p>
+      <h2>Let's build<br><em>something</em><br>great.</h2>
+    </div>
+    <div class="footer-icons-center">
+      <div class="f-icon-wrap">
+        <a href="https://www.linkedin.com/in/vaelynhargrave/" target="_blank" class="f-icon" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <span class="f-icon-label">LinkedIn</span>
+      </div>
+      <div class="f-icon-wrap">
+        <a href="https://vaelynhargrave.setmore.com/" target="_blank" class="f-icon" aria-label="Book Now">
+          <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+        </a>
+        <span class="f-icon-label">Book Now</span>
+      </div>
+      <div class="f-icon-wrap">
+        <a href="/cdn-cgi/l/email-protection#2a43445b5f4358434f596a5c4b4f465344424b584d584b5c4f04494547" class="f-icon" aria-label="Email Me">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+        <span class="f-icon-label">Email Me</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <span>&copy; 2026 Vaelyn Hargrave. Seattle, WA.</span>
+    <span>CPG Strategy &nbsp;&middot;&nbsp; M&amp;A Advisory</span>
+  </div>
+</footer>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+var ham=document.getElementById('ham'),menu=document.getElementById('mobileMenu');
+function closeMenu(){menu.classList.remove('open');ham.classList.remove('open');document.body.style.overflow=''}
+ham.addEventListener('click',function(){var o=menu.classList.toggle('open');ham.classList.toggle('open');document.b

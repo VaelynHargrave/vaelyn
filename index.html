@@ -23,7 +23,7 @@ img,video{display:block;max-width:100%}
 /* NAV */
 .nav{position:fixed;top:0;left:0;right:0;z-index:300;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--lg)}
 .nav-logo{display:flex;align-items:center;gap:.55rem}
-.nav-logo-mark{width:34px;height:34px;border:1.5px solid var(--black);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.8rem;font-weight:700;flex-shrink:0}
+.nav-logo-mark{width:36px;height:36px;flex-shrink:0;display:flex;align-items:center;justify-content:center}.nav-logo-mark img{width:100%;height:100%;object-fit:contain;display:block}
 .nav-logo-text{display:flex;flex-direction:column;line-height:1.2}
 .nav-logo-text .sub{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mg)}
 .nav-logo-text .name{font-size:.82rem;font-weight:600}
@@ -223,7 +223,7 @@ img,video{display:block;max-width:100%}
 
 <nav class="nav">
   <a href="/vaelyn/index.html" class="nav-logo">
-    <div class="nav-logo-mark">V</div>
+    <div class="nav-logo-mark"><img src="/vaelyn/assets/logos/Black_VH_Logopng.png" alt="VH"/></div>
     <div class="nav-logo-text">
       <span class="sub">Business Strategy</span>
       <span class="name">Vaelyn Hargrave</span>
@@ -234,7 +234,7 @@ img,video{display:block;max-width:100%}
     <li><a href="#work">Work</a></li>
     <li><a href="#resume">Resume</a></li>
     <li><a href="/vaelyn/invest/index.html">Invest</a></li>
-    <li><a href="mailto:inquiries@vaelynhargrave.com" class="nav-cta">WORK WITH ME</a></li>
+    <li><a href="/cdn-cgi/l/email-protection#b2dbdcc3c7dbc0dbd7c1f2c4d3d7decbdcdad3c0d5c0d3c4d79cd1dddf" class="nav-cta">WORK WITH ME</a></li>
   </ul>
   <button class="hamburger" id="ham" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -259,7 +259,7 @@ img,video{display:block;max-width:100%}
       <img src="/vaelyn/assets/images/book_consult.jpg" alt=""/>
       <span class="mobile-item-label">Invest</span>
     </a>
-    <a href="mailto:inquiries@vaelynhargrave.com" class="mobile-item cta-item">
+    <a href="/cdn-cgi/l/email-protection#ff96918e8a968d969a8cbf899e9a938691979e8d988d9e899ad19c9092" class="mobile-item cta-item">
       <span class="mobile-item-label">Work With Me</span>
     </a>
   </div>
@@ -306,7 +306,7 @@ img,video{display:block;max-width:100%}
     <div class="brand-right">
       <h2>I <em>transform</em> brands.</h2>
       <p>From category strategy to full-funnel product commercialization. I define, launch, and scale ideas that unlock durable, repeatable revenue.</p>
-      <a href="mailto:inquiries@vaelynhargrave.com" class="btn-red">Work With Me</a>
+      <a href="/cdn-cgi/l/email-protection#026b6c73776b706b6771427463676e7b6c6a637065706374672c616d6f" class="btn-red">Work With Me</a>
     </div>
   </div>
 </div>
@@ -479,7 +479,7 @@ img,video{display:block;max-width:100%}
         <span class="f-icon-label">Book Now</span>
       </div>
       <div class="f-icon-wrap">
-        <a href="mailto:inquiries@vaelynhargrave.com" class="f-icon" aria-label="Email Me">
+        <a href="/cdn-cgi/l/email-protection#e78e8996928e958e8294a79186828b9e898f86958095869182c984888a" class="f-icon" aria-label="Email Me">
           <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
         </a>
         <span class="f-icon-label">Email Me</span>
@@ -494,15 +494,9 @@ img,video{display:block;max-width:100%}
 
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 var ham=document.getElementById('ham'),menu=document.getElementById('mobileMenu');
 function closeMenu(){menu.classList.remove('open');ham.classList.remove('open');document.body.style.overflow=''}
 ham.addEventListener('click',function(){var o=menu.classList.toggle('open');ham.classList.toggle('open');document.body.style.overflow=o?'hidden':''});
 (function(){
-  var els=document.querySelectorAll('.fu');
-  var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{threshold:.06,rootMargin:'0px 0px -20px 0px'});
-  els.forEach(function(el){io.observe(el)});
-})();
-</script>
-</body>
-</html>
+  v
