@@ -84,7 +84,7 @@ img,video{display:block;max-width:100%}
 .brand-grid-3x3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .brand-tile{
   aspect-ratio:1.65;border-radius:var(--r);background:var(--off);
-  border:1px solid var(--black);
+  border:1px solid var(--lg);
   display:flex;align-items:center;justify-content:center;
   padding:0;transition:background .2s;overflow:hidden;position:relative;
 }
@@ -94,8 +94,9 @@ img,video{display:block;max-width:100%}
   max-width:90%;
   object-fit:contain;display:block;margin:0 auto;
 }
-.brand-tile img[alt="Nestlé"]{height:80%}
-.brand-tile img[alt="Starbucks"]{height:72%}
+.brand-tile img[alt="Nestlé"]{height:64%}
+.brand-tile img[alt="Starbucks"]{height:58%}
+.brand-tile img[alt="Seattle's Best Coffee"]{display:block;margin:auto}
 .brand-right h2{font-family:var(--serif);font-size:clamp(1.9rem,3.5vw,3rem);font-weight:900;line-height:1.12;margin-bottom:.9rem;letter-spacing:-.02em}
 .brand-right h2 em{font-style:italic}
 .brand-right p{font-size:.92rem;color:var(--dg);line-height:1.75;margin-bottom:1.4rem;max-width:380px}
@@ -210,8 +211,9 @@ img,video{display:block;max-width:100%}
   .brand-inner{grid-template-columns:1fr;gap:2rem}
   .brand-sec{padding:2.5rem var(--pad)}
   .brand-tile img{height:80%}
-  .brand-tile img[alt="Nestlé"]{height:100%}
-  .brand-tile img[alt="Starbucks"]{height:95%}
+  .brand-tile img[alt="Nestlé"]{height:80%}
+  .brand-tile img[alt="Starbucks"]{height:76%}
+  .brand-tile img[alt="Seattle's Best Coffee"]{height:64%;display:block;margin:auto}
   .timeline,.skills-wrap,.edu-wrap{padding:2.5rem var(--pad)}
   .trow{grid-template-columns:1fr;gap:.2rem}
   .edu-row{grid-template-columns:1fr;gap:.2rem}
