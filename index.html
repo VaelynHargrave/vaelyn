@@ -84,15 +84,18 @@ img,video{display:block;max-width:100%}
 .brand-grid-3x3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .brand-tile{
   aspect-ratio:1.65;border-radius:var(--r);background:var(--off);
+  border:1px solid var(--black);
   display:flex;align-items:center;justify-content:center;
-  padding:1rem;transition:background .2s;overflow:hidden;
+  padding:0;transition:background .2s;overflow:hidden;position:relative;
 }
 .brand-tile:hover{background:#e5e2dd}
 .brand-tile img{
-  max-width:85%;max-height:70%;
-  width:auto;height:auto;
+  width:auto;height:60%;
+  max-width:90%;
   object-fit:contain;display:block;margin:0 auto;
 }
+.brand-tile img[alt="Nestlé"]{height:80%}
+.brand-tile img[alt="Starbucks"]{height:72%}
 .brand-right h2{font-family:var(--serif);font-size:clamp(1.9rem,3.5vw,3rem);font-weight:900;line-height:1.12;margin-bottom:.9rem;letter-spacing:-.02em}
 .brand-right h2 em{font-style:italic}
 .brand-right p{font-size:.92rem;color:var(--dg);line-height:1.75;margin-bottom:1.4rem;max-width:380px}
@@ -206,6 +209,9 @@ img,video{display:block;max-width:100%}
   .about-cols{grid-template-columns:1fr;gap:2rem}
   .brand-inner{grid-template-columns:1fr;gap:2rem}
   .brand-sec{padding:2.5rem var(--pad)}
+  .brand-tile img{height:80%}
+  .brand-tile img[alt="Nestlé"]{height:100%}
+  .brand-tile img[alt="Starbucks"]{height:95%}
   .timeline,.skills-wrap,.edu-wrap{padding:2.5rem var(--pad)}
   .trow{grid-template-columns:1fr;gap:.2rem}
   .edu-row{grid-template-columns:1fr;gap:.2rem}
