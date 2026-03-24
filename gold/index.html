@@ -92,9 +92,9 @@ img,video{display:block;max-width:100%}
 .hls-chg{font-family:var(--mono);font-size:.68rem}
 .live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:5px;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.gh-right{overflow:hidden;background:#111}
-.gh-right-inner{width:100%;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem;background:linear-gradient(135deg,#0a0a0a 0%,#111 50%,#1a1208 100%);position:relative}
-.gh-right-inner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(232,184,75,0.08) 0%,transparent 65%)}
+.gh-right{overflow:hidden;background:#0a0a0a;position:relative}
+.gh-right-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:.45;display:block}
+.gh-right-inner{width:100%;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem;background:linear-gradient(to right,rgba(0,0,0,.7) 0%,rgba(0,0,0,.15) 60%,transparent 100%),linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.2) 50%,transparent 100%);position:relative;z-index:1}
 .gh-ticker{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;color:rgba(255,255,255,.18);margin-bottom:2.5rem;text-transform:uppercase}
 .gh-stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.07);border-radius:8px;overflow:hidden}
 .gh-stat{background:#0a0a0a;padding:1.25rem 1.1rem}
@@ -162,9 +162,10 @@ img,video{display:block;max-width:100%}
 .leg-sq{width:8px;height:8px;border-radius:2px;flex-shrink:0}
 .chart-wrap{position:relative;width:100%}
 .chart-wrap.h320{height:320px}
+.chart-wrap.h200{height:200px}
 .chart-wrap.h180{height:180px}
 .chart-wrap.h160{height:160px}
-.rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rel-grid{display:grid;grid-template-columns:1fr;gap:12px}
 
 /* ── RELATIONSHIPS (like criteria section) ── */
 .rel-area{padding:3.5rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
@@ -231,7 +232,6 @@ img,video{display:block;max-width:100%}
   .pillar:nth-child(3){border-right:1px solid rgba(255,255,255,.1)}
   .pillar:nth-child(4){border-right:none}
   .metrics-grid{grid-template-columns:repeat(2,1fr)}
-  .rel-grid{grid-template-columns:1fr}
   .rel-intro{grid-template-columns:1fr}
   .ifthen-wrap{grid-template-columns:1fr}
   .footer-icons-center{gap:1.25rem}
@@ -314,8 +314,8 @@ img,video{display:block;max-width:100%}
 <div class="gold-hero fu">
   <div class="gh-left">
     <p class="eye">◈ Gold Signal Dashboard</p>
-    <h1>Real-time market<br>signals for <em>gold.</em></h1>
-    <p>Tracking the four critical relationships that determine gold's next move — dollar strength, real yield, miner sentiment, and the silver/energy divergence — against the backdrop of the Iran war and Hormuz closure.</p>
+    <h1>Live Market Indicators<br>for <em>gold.</em></h1>
+    <p>These four relationships provide a real-time read on whether gold's next move is up or down. Each updates automatically and generates a live analysis based on live market price action.</p>
     <div class="hero-live-strip">
       <div class="hls-item">
         <span class="hls-label"><span class="live-dot"></span>Gold / oz</span>
@@ -343,6 +343,7 @@ img,video{display:block;max-width:100%}
     </div>
   </div>
   <div class="gh-right">
+    <img class="gh-right-bg" src="/gold/gold-bars.jpg" alt=""/>
     <div class="gh-right-inner">
       <p class="gh-ticker">◈ Iran War Era · Nov 2025 → Present · Hormuz Closure Active</p>
       <div class="gh-stat-grid">
@@ -368,6 +369,33 @@ img,video{display:block;max-width:100%}
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- LIVE SIGNAL STRIP -->
+<div style="border-bottom:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02)">
+  <div style="max-width:1140px;margin:0 auto;padding:1.1rem var(--pad);display:flex;gap:2rem;flex-wrap:wrap;align-items:center">
+    <span style="font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);flex-shrink:0">Live Signals</span>
+    <span style="font-family:var(--mono);font-size:.75rem;display:inline-flex;align-items:center;gap:.4rem">
+      <span style="color:rgba(255,255,255,.38)">①</span>
+      <span style="color:rgba(255,255,255,.7)">Dollar (UUP) vs Gold</span>
+      <span id="pill-UUP" class="a-badge ab-neut" style="margin:0;padding:2px 8px;font-size:.6rem">—</span>
+    </span>
+    <span style="font-family:var(--mono);font-size:.75rem;display:inline-flex;align-items:center;gap:.4rem">
+      <span style="color:rgba(255,255,255,.38)">②</span>
+      <span style="color:rgba(255,255,255,.7)">TLT vs TIP (Fed pivot)</span>
+      <span id="pill-TLT" class="a-badge ab-neut" style="margin:0;padding:2px 8px;font-size:.6rem">—</span>
+    </span>
+    <span style="font-family:var(--mono);font-size:.75rem;display:inline-flex;align-items:center;gap:.4rem">
+      <span style="color:rgba(255,255,255,.38)">③</span>
+      <span style="color:rgba(255,255,255,.7)">GDX Miners vs Gold</span>
+      <span id="pill-GDX" class="a-badge ab-neut" style="margin:0;padding:2px 8px;font-size:.6rem">—</span>
+    </span>
+    <span style="font-family:var(--mono);font-size:.75rem;display:inline-flex;align-items:center;gap:.4rem">
+      <span style="color:rgba(255,255,255,.38)">④</span>
+      <span style="color:rgba(255,255,255,.7)">Silver vs Energy (SLV/XLE)</span>
+      <span id="pill-SLV" class="a-badge ab-neut" style="margin:0;padding:2px 8px;font-size:.6rem">—</span>
+    </span>
   </div>
 </div>
 
@@ -460,53 +488,12 @@ img,video{display:block;max-width:100%}
   </div>
 </div>
 
-<!-- FOUR SIGNAL RELATIONSHIPS -->
+<!-- FOUR SIGNAL RELATIONSHIPS — full width single column charts -->
 <div class="rel-area fu" id="signals">
   <div class="dash-section">
 
-    <div class="rel-intro">
-      <div>
-        <p class="sec-eye">Signal Relationships</p>
-        <h2 class="sec-h2">The four indicators that<br>move <em>gold.</em></h2>
-      </div>
-      <div>
-        <p class="sec-p">These four relationships provide a real-time read on whether gold's next move is up or down. Each updates automatically and generates a live mini-analysis based on current price action.</p>
-        <div class="signal-rows" id="signalSummaryRows">
-          <!-- Filled by JS -->
-        </div>
-      </div>
-    </div>
-
-    <div class="rel-grid">
-      <div class="chart-panel">
-        <div class="cp-head"><div><div class="cp-title">① Dollar (UUP) vs Gold</div><div class="cp-sub">Inverse — dollar strength caps gold</div></div><div id="badge-UUP" class="a-badge ab-neut">—</div></div>
-        <div class="chart-wrap h160"><canvas id="r1"></canvas></div>
-        <div class="mini-anal" id="anal-UUP">Loading…</div>
-      </div>
-      <div class="chart-panel">
-        <div class="cp-head"><div><div class="cp-title">② TLT Bonds vs TIP</div><div class="cp-sub">Fed pivot signal — TLT leading = gold green light</div></div><div id="badge-TLT" class="a-badge ab-neut">—</div></div>
-        <div class="chart-wrap h160"><canvas id="r2"></canvas></div>
-        <div class="mini-anal" id="anal-TLT">Loading…</div>
-      </div>
-      <div class="chart-panel">
-        <div class="cp-head"><div><div class="cp-title">③ GDX Miners vs Gold</div><div class="cp-sub">Sentiment leader — miners outperform = accumulation</div></div><div id="badge-GDX" class="a-badge ab-neut">—</div></div>
-        <div class="chart-wrap h160"><canvas id="r3"></canvas></div>
-        <div class="mini-anal" id="anal-GDX">Loading…</div>
-      </div>
-      <div class="chart-panel">
-        <div class="cp-head"><div><div class="cp-title">④ SLV Silver vs XLE Energy</div><div class="cp-sub">Canary vs inflation engine — tracks real thesis</div></div><div id="badge-SLV" class="a-badge ab-neut">—</div></div>
-        <div class="chart-wrap h160"><canvas id="r4"></canvas></div>
-        <div class="mini-anal" id="anal-SLV">Loading…</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- IF→THEN -->
-<div class="ifthen-area fu">
-  <div class="dash-section">
-    <div class="ifthen-wrap">
+    <!-- Moved: Automated Signal Logic (replaces old Signal Relationships intro) -->
+    <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:start;margin-bottom:2.5rem;">
       <div>
         <p class="sec-eye">Automated Signal Logic</p>
         <h2 class="sec-h2">If → Then<br><em>summary.</em></h2>
@@ -521,8 +508,35 @@ img,video{display:block;max-width:100%}
         </div>
       </div>
     </div>
+
+    <!-- Four full-width relationship charts -->
+    <div class="rel-grid">
+      <div class="chart-panel">
+        <div class="cp-head"><div><div class="cp-title" id="title-UUP">① Dollar (UUP) vs Gold</div><div class="cp-sub">Inverse — dollar strength caps gold</div></div><div id="badge-UUP" class="a-badge ab-neut">—</div></div>
+        <div class="chart-wrap h200"><canvas id="r1"></canvas></div>
+        <div class="mini-anal" id="anal-UUP">Loading…</div>
+      </div>
+      <div class="chart-panel">
+        <div class="cp-head"><div><div class="cp-title" id="title-TLT">② TLT Bonds vs TIP</div><div class="cp-sub">Fed pivot signal — TLT leading = gold green light</div></div><div id="badge-TLT" class="a-badge ab-neut">—</div></div>
+        <div class="chart-wrap h200"><canvas id="r2"></canvas></div>
+        <div class="mini-anal" id="anal-TLT">Loading…</div>
+      </div>
+      <div class="chart-panel">
+        <div class="cp-head"><div><div class="cp-title" id="title-GDX">③ GDX Miners vs Gold</div><div class="cp-sub">Sentiment leader — miners outperform = accumulation</div></div><div id="badge-GDX" class="a-badge ab-neut">—</div></div>
+        <div class="chart-wrap h200"><canvas id="r3"></canvas></div>
+        <div class="mini-anal" id="anal-GDX">Loading…</div>
+      </div>
+      <div class="chart-panel">
+        <div class="cp-head"><div><div class="cp-title" id="title-SLV">④ SLV Silver vs XLE Energy</div><div class="cp-sub">Canary vs inflation engine — tracks real thesis</div></div><div id="badge-SLV" class="a-badge ab-neut">—</div></div>
+        <div class="chart-wrap h200"><canvas id="r4"></canvas></div>
+        <div class="mini-anal" id="anal-SLV">Loading…</div>
+      </div>
+    </div>
+
   </div>
 </div>
+
+<!-- IF→THEN section removed — content moved above -->
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -798,21 +812,17 @@ function computeSignals() {
   const sigs=[sig1,sig2,sig3,sig4];
   const ids=['UUP','TLT','GDX','SLV'];
   sigs.forEach((s,i) => {
+    // badge inside chart panel
     const b=document.getElementById('badge-'+ids[i]); if(b){ b.className='a-badge '+s.badge.cls; b.textContent=s.badge.txt; }
+    // analysis
     const a=document.getElementById('anal-'+ids[i]); if(a) a.innerHTML=s.anal;
+    // signal strip badge
+    const p=document.getElementById('pill-'+ids[i]);
+    if(p){ p.className='a-badge '+s.badge.cls; p.textContent=s.badge.txt; p.style.margin='0'; p.style.padding='2px 8px'; p.style.fontSize='.6rem'; }
+    // chart panel title
+    const t=document.getElementById('title-'+ids[i]);
+    if(t){ t.textContent=['① Dollar (UUP) vs Gold','② TLT Bonds vs TIP','③ GDX Miners vs Gold','④ SLV Silver vs XLE Energy'][i]; }
   });
-
-  // Signal summary rows
-  const rows=document.getElementById('signalSummaryRows');
-  if(rows){
-    const data=[
-      {lbl:'① Dollar (UUP) vs Gold',s:sig1},
-      {lbl:'② TLT vs TIP (Fed pivot)',s:sig2},
-      {lbl:'③ GDX Miners vs Gold',s:sig3},
-      {lbl:'④ Silver vs Energy (SLV/XLE)',s:sig4},
-    ];
-    rows.innerHTML=data.map(({lbl,s})=>`<div class="signal-row"><span class="sr-label">${lbl}</span><span class="sr-tag a-badge ${s.badge.cls}" style="margin:0;padding:2px 7px">${s.bull?'▲ Bullish':s.badge.cls==='ab-bear'?'▼ Bearish':'◆ Neutral'}</span></div>`).join('');
-  }
 
   // IF→THEN grid
   const grid=document.getElementById('ifthenGrid');
