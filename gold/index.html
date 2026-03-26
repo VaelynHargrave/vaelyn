@@ -71,14 +71,16 @@ img,video{display:block;max-width:100%}
 .page{padding-top:var(--nav)}
 .fu{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
 .fu.on{opacity:1;transform:translateY(0)}
+/* ensure charts size correctly even before animation */
 .btn-red{padding:.52rem 1.2rem;background:var(--red);color:var(--white);border-radius:2rem;font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;transition:background .2s;display:inline-block}
 .btn-red:hover{background:#c01818}
 .btn-white-out{padding:.52rem 1.2rem;border:1.5px solid rgba(255,255,255,.4);border-radius:2rem;font-size:.75rem;font-weight:500;color:rgba(255,255,255,.7);transition:all .2s;display:inline-block}
 .btn-white-out:hover{border-color:var(--white);color:var(--white)}
 
 /* ── HERO (invest-style 50/50 grid) ── */
-.gold-hero{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid rgba(255,255,255,.1);min-height:88vh}
-.gh-left{padding:5rem 3rem 5rem var(--pad);display:flex;flex-direction:column;justify-content:center}
+.gold-hero{position:relative;border-bottom:1px solid rgba(255,255,255,.1);min-height:88vh;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.gold-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:.45;z-index:0;display:block}
+.gh-left{padding:5rem 3rem 5rem var(--pad);display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;background:linear-gradient(to right,rgba(0,0,0,.82) 0%,rgba(0,0,0,.55) 70%,transparent 100%)}
 .gh-left .eye{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem;font-weight:600}
 .gh-left h1{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:900;line-height:1.1;letter-spacing:-.025em;margin-bottom:1.5rem;color:var(--white)}
 .gh-left h1 em{font-style:italic}
@@ -92,9 +94,9 @@ img,video{display:block;max-width:100%}
 .hls-chg{font-family:var(--mono);font-size:.68rem}
 .live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:5px;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.gh-right{overflow:hidden;background:#0a0a0a;position:relative}
-.gh-right-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:.45;display:block}
-.gh-right-inner{width:100%;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem;background:linear-gradient(to right,rgba(0,0,0,.7) 0%,rgba(0,0,0,.15) 60%,transparent 100%),linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.2) 50%,transparent 100%);position:relative;z-index:1}
+.gh-right{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:flex-end}
+.gh-right-bg{display:none}
+.gh-right-inner{width:100%;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem;background:linear-gradient(to left,rgba(0,0,0,.7) 0%,rgba(0,0,0,.15) 60%,transparent 100%),linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.2) 50%,transparent 100%)}
 .gh-ticker{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;color:rgba(255,255,255,.18);margin-bottom:2.5rem;text-transform:uppercase}
 .gh-stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.07);border-radius:8px;overflow:hidden}
 .gh-stat{background:#0a0a0a;padding:1.25rem 1.1rem}
@@ -109,7 +111,7 @@ img,video{display:block;max-width:100%}
 /* ── PILLARS (same structure as invest) ── */
 .pillars{border-bottom:1px solid rgba(255,255,255,.1)}
 .pillars-inner{display:grid;grid-template-columns:repeat(4,1fr);max-width:1140px;margin:0 auto;padding:0 var(--pad)}
-.pillar{padding:2.5rem 1.75rem 2.5rem 0;border-right:1px solid rgba(255,255,255,.1)}
+.pillar{padding:2.5rem 1.75rem 2.5rem 1.75rem;border-right:1px solid rgba(255,255,255,.1)}
 .pillar:last-child{border-right:none;padding-right:0;padding-left:1.75rem}
 .pillar:not(:first-child){padding-left:1.75rem}
 .p-num{font-family:var(--serif);font-size:2.8rem;font-weight:400;color:rgba(255,255,255,.1);margin-bottom:.5rem;line-height:1}
@@ -151,7 +153,7 @@ img,video{display:block;max-width:100%}
 .sp-wrap{height:26px;margin-top:7px}
 
 /* ── CHART PANELS ── */
-.chart-area{padding:3.5rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.chart-area{padding:3.5rem 0;border-bottom:1px solid rgba(255,255,255,.1);overflow:hidden}
 .chart-panel{background:var(--panel);border:1px solid var(--panelborder);border-radius:10px;padding:20px 20px 16px;margin-bottom:14px}
 .cp-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
 .cp-title{font-family:var(--serif);font-size:1.15rem;font-weight:700;color:var(--white)}
@@ -161,10 +163,10 @@ img,video{display:block;max-width:100%}
 .leg{display:flex;align-items:center;gap:4px;font-family:var(--mono);font-size:.65rem;color:rgba(255,255,255,.4)}
 .leg-sq{width:8px;height:8px;border-radius:2px;flex-shrink:0}
 .chart-wrap{position:relative;width:100%}
-.chart-wrap.h320{height:320px}
-.chart-wrap.h200{height:200px}
-.chart-wrap.h180{height:180px}
-.chart-wrap.h160{height:160px}
+.chart-wrap.h320{height:320px;min-height:200px}
+.chart-wrap.h200{height:200px;min-height:160px}
+.chart-wrap.h180{height:180px;min-height:140px}
+.chart-wrap.h160{height:160px;min-height:120px}
 .rel-grid{display:grid;grid-template-columns:1fr;gap:12px}
 
 /* ── RELATIONSHIPS (like criteria section) ── */
@@ -180,17 +182,28 @@ img,video{display:block;max-width:100%}
 .mini-anal{font-size:.82rem;color:rgba(255,255,255,.48);line-height:1.62;padding:10px 12px;background:rgba(255,255,255,.03);border-radius:5px;border-left:2px solid rgba(255,255,255,.1);margin-top:8px}
 .mini-anal .hi{color:var(--white);font-weight:500}
 
-/* ── SIGNAL ROWS (like crit-row on invest) ── */
-.signal-rows{margin-top:1.5rem}
-.signal-row{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center}
+/* ── SIGNAL ROWS ── */
+.signal-rows{margin-top:0}
+.signal-row{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;gap:1rem}
 .signal-row:first-of-type{border-top:1px solid rgba(255,255,255,.08)}
-.sr-label{font-size:.88rem;font-weight:500;color:var(--white)}
+.sr-label{font-size:.92rem;font-weight:500;color:var(--white)}
 .sr-tag{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase}
 
-/* ── IF→THEN (like booking/criteria) ── */
-.ifthen-area{padding:3.5rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
-.ifthen-wrap{display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:start}
-.ifthen-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+/* ── VERDICT FULL WIDTH ── */
+.verdict-full{margin-bottom:2rem}
+.verdict-full-inner{background:rgba(232,184,75,.06);border:1px solid rgba(232,184,75,.22);border-radius:10px;padding:20px 22px}
+
+/* ── SIGNALS SPLIT: left=rows, right=if-then cards ── */
+.signals-split{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:2.5rem;align-items:start}
+.signal-rows-panel{background:var(--panel);border:1px solid var(--panelborder);border-radius:10px;padding:20px 20px}
+
+/* ── IF→THEN CARDS ── */
+.ifthen-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+/* ── CHARTS 2x2 GRID ── */
+.rel-grid-2x2{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%}
+.rel-grid-2x2 .chart-panel{min-width:0;width:100%}
+.rel-grid-2x2 canvas{max-width:100%}
 .it-card{background:var(--panel);border:1px solid var(--panelborder);border-radius:7px;padding:13px 14px}
 .it-if{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:5px}
 .it-cond{font-size:.85rem;font-weight:500;color:var(--white);margin-bottom:7px;line-height:1.4}
@@ -227,19 +240,23 @@ img,video{display:block;max-width:100%}
   .nav-links{display:none}
   .hamburger{display:flex}
   .gold-hero{grid-template-columns:1fr;min-height:auto}
-  .gh-right{min-height:340px}
+  .gh-right{min-height:260px}
   .pillars-inner{grid-template-columns:repeat(2,1fr)}
   .pillar:nth-child(3){border-right:1px solid rgba(255,255,255,.1)}
   .pillar:nth-child(4){border-right:none}
   .metrics-grid{grid-template-columns:repeat(2,1fr)}
   .rel-intro{grid-template-columns:1fr}
-  .ifthen-wrap{grid-template-columns:1fr}
+  .signals-split{grid-template-columns:1fr}
   .footer-icons-center{gap:1.25rem}
+}
+@media(max-width:680px){
+  .rel-grid-2x2{grid-template-columns:1fr}
 }
 @media(max-width:540px){
   .metrics-grid{grid-template-columns:repeat(2,1fr)}
-  .ifthen-grid{grid-template-columns:1fr}
+  .ifthen-grid{grid-template-columns:1fr 1fr}
   .gh-left{padding:3rem 1rem 2rem}
+  .gh-right{min-height:220px}
   .pillars-inner{grid-template-columns:1fr}
   .pillar:nth-child(3){border-right:none}
 }
@@ -312,6 +329,7 @@ img,video{display:block;max-width:100%}
 
 <!-- HERO -->
 <div class="gold-hero fu">
+  <img class="gold-hero-bg" src="/gold/gold-bars.jpg" alt=""/>
   <div class="gh-left">
     <p class="eye">◈ Gold Signal Dashboard</p>
     <h1>Live Market Indicators<br>for <em>gold.</em></h1>
@@ -343,7 +361,6 @@ img,video{display:block;max-width:100%}
     </div>
   </div>
   <div class="gh-right">
-    <img class="gh-right-bg" src="/gold/gold-bars.jpg" alt=""/>
     <div class="gh-right-inner">
       <p class="gh-ticker">◈ Iran War Era · Nov 2025 → Present · Hormuz Closure Active</p>
       <div class="gh-stat-grid">
@@ -372,32 +389,7 @@ img,video{display:block;max-width:100%}
   </div>
 </div>
 
-<!-- LIVE SIGNAL STRIP -->
-<div style="border-bottom:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02)">
-  <div style="max-width:1140px;margin:0 auto;padding:1.1rem var(--pad);display:flex;gap:2rem;flex-wrap:wrap;align-items:center">
-    <span style="font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);flex-shrink:0">Live Signals</span>
-    <span style="font-family:var(--mono);font-size:.75rem;display:inline-flex;align-items:center;gap:.4rem">
-      <span style="color:rgba(255,255,255,.38)">①</span>
-      <span style="color:rgba(255,255,255,.7)">Dollar (UUP) vs Gold</span>
-      <span id="pill-UUP" class="a-badge ab-neut" style="margin:0;padding:2px 8px;font-size:.6rem">—</span>
-    </span>
-    <span style="font-family:var(--mono);font-size:.75rem;display:inline-flex;align-items:center;gap:.4rem">
-      <span style="color:rgba(255,255,255,.38)">②</span>
-      <span style="color:rgba(255,255,255,.7)">TLT vs TIP (Fed pivot)</span>
-      <span id="pill-TLT" class="a-badge ab-neut" style="margin:0;padding:2px 8px;font-size:.6rem">—</span>
-    </span>
-    <span style="font-family:var(--mono);font-size:.75rem;display:inline-flex;align-items:center;gap:.4rem">
-      <span style="color:rgba(255,255,255,.38)">③</span>
-      <span style="color:rgba(255,255,255,.7)">GDX Miners vs Gold</span>
-      <span id="pill-GDX" class="a-badge ab-neut" style="margin:0;padding:2px 8px;font-size:.6rem">—</span>
-    </span>
-    <span style="font-family:var(--mono);font-size:.75rem;display:inline-flex;align-items:center;gap:.4rem">
-      <span style="color:rgba(255,255,255,.38)">④</span>
-      <span style="color:rgba(255,255,255,.7)">Silver vs Energy (SLV/XLE)</span>
-      <span id="pill-SLV" class="a-badge ab-neut" style="margin:0;padding:2px 8px;font-size:.6rem">—</span>
-    </span>
-  </div>
-</div>
+
 
 <!-- PILLARS -->
 <div class="pillars fu">
@@ -464,53 +456,57 @@ img,video{display:block;max-width:100%}
       <div class="chart-wrap h320"><canvas id="mainChart"></canvas></div>
     </div>
 
-    <!-- Normalized all instruments -->
-    <div class="chart-panel">
-      <div class="cp-head">
-        <div>
-          <div class="cp-title">All 8 Signals — Indexed Performance</div>
-          <div class="cp-sub">Normalized to 100 at Nov 25, 2025 · Hover to compare</div>
-        </div>
-        <div class="leg-row">
-          <span class="leg"><span class="leg-sq" style="background:var(--gold)"></span>Gold</span>
-          <span class="leg"><span class="leg-sq" style="background:var(--crude)"></span>Brent</span>
-          <span class="leg"><span class="leg-sq" style="background:var(--uup)"></span>UUP</span>
-          <span class="leg"><span class="leg-sq" style="background:var(--tlt)"></span>TLT</span>
-          <span class="leg"><span class="leg-sq" style="background:var(--gdx)"></span>GDX</span>
-          <span class="leg"><span class="leg-sq" style="background:var(--slv)"></span>SLV</span>
-          <span class="leg"><span class="leg-sq" style="background:var(--xle)"></span>XLE</span>
-          <span class="leg"><span class="leg-sq" style="background:var(--tip)"></span>TIP</span>
-        </div>
-      </div>
-      <div class="chart-wrap h180"><canvas id="normChart"></canvas></div>
-    </div>
 
   </div>
 </div>
 
-<!-- FOUR SIGNAL RELATIONSHIPS — full width single column charts -->
+<!-- SIGNAL RELATIONSHIPS SECTION -->
 <div class="rel-area fu" id="signals">
   <div class="dash-section">
 
-    <!-- Moved: Automated Signal Logic (replaces old Signal Relationships intro) -->
-    <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:start;margin-bottom:2.5rem;">
-      <div>
-        <p class="sec-eye">Automated Signal Logic</p>
-        <h2 class="sec-h2">If → Then<br><em>summary.</em></h2>
-        <p class="sec-p">Each relationship generates a real-time conditional — if the signal reads X, then gold is likely to do Y. Updated every 60 seconds from live market data.</p>
+    <!-- FULL WIDTH: Live Verdict -->
+    <div class="verdict-full">
+      <div class="verdict-full-inner">
+        <h2 class="sec-h2" style="margin-bottom:.5rem">Live summary and <em>verdict</em> for gold</h2>
+        <p class="sec-eye" style="margin-bottom:1rem">Updated every 60 seconds from live market data</p>
+        <div class="vb-text" id="verdictText">Computing signal analysis…</div>
         <div class="data-note" id="dataNoteEl">NOTE: Live data unavailable via direct fetch (CORS). Deploy the included Cloudflare Worker proxy at gold-proxy.vaelynhargrave.workers.dev to enable real-time prices. Displaying verified data as of Mar 23, 2026.</div>
-      </div>
-      <div>
-        <div class="ifthen-grid" id="ifthenGrid"><!-- JS --></div>
-        <div class="verdict-box">
-          <div class="vb-label">▸ Current composite verdict for gold</div>
-          <div class="vb-text" id="verdictText">Computing signal analysis…</div>
-        </div>
       </div>
     </div>
 
-    <!-- Four full-width relationship charts -->
-    <div class="rel-grid">
+    <!-- TWO COLUMN: Signal rows + If→Then cards -->
+    <div class="signals-split">
+      <!-- LEFT: Signal rows (from screenshot style) -->
+      <div class="signal-rows-panel">
+        <p class="sec-eye" style="margin-bottom:1rem">Automated Signal Logic</p>
+        <div class="signal-rows">
+          <div class="signal-row">
+            <span class="sr-label"><span style="color:rgba(255,255,255,.4);margin-right:.5rem">①</span>Dollar (UUP) vs Gold</span>
+            <span id="pill-UUP" class="a-badge ab-neut">—</span>
+          </div>
+          <div class="signal-row">
+            <span class="sr-label"><span style="color:rgba(255,255,255,.4);margin-right:.5rem">②</span>TLT vs TIP (Fed pivot)</span>
+            <span id="pill-TLT" class="a-badge ab-neut">—</span>
+          </div>
+          <div class="signal-row">
+            <span class="sr-label"><span style="color:rgba(255,255,255,.4);margin-right:.5rem">③</span>GDX Miners vs Gold</span>
+            <span id="pill-GDX" class="a-badge ab-neut">—</span>
+          </div>
+          <div class="signal-row">
+            <span class="sr-label"><span style="color:rgba(255,255,255,.4);margin-right:.5rem">④</span>Silver vs Energy (SLV/XLE)</span>
+            <span id="pill-SLV" class="a-badge ab-neut">—</span>
+          </div>
+        </div>
+        <div style="margin-top:.75rem;font-family:var(--mono);font-size:.65rem;color:rgba(255,255,255,.25)">Updated every 60 seconds from live market data</div>
+      </div>
+      <!-- RIGHT: If→Then cards 2x2 -->
+      <div>
+        <div class="ifthen-grid" id="ifthenGrid"><!-- JS --></div>
+      </div>
+    </div>
+
+    <!-- CHARTS 2x2 GRID -->
+    <div class="rel-grid-2x2">
       <div class="chart-panel">
         <div class="cp-head"><div><div class="cp-title" id="title-UUP">① Dollar (UUP) vs Gold</div><div class="cp-sub">Inverse — dollar strength caps gold</div></div><div id="badge-UUP" class="a-badge ab-neut">—</div></div>
         <div class="chart-wrap h200"><canvas id="r1"></canvas></div>
@@ -535,8 +531,6 @@ img,video{display:block;max-width:100%}
 
   </div>
 </div>
-
-<!-- IF→THEN section removed — content moved above -->
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -732,19 +726,6 @@ function buildMain() {
   charts.main=new Chart(ctx,cfg);
 }
 
-// ── BUILD NORM CHART ──
-function buildNorm() {
-  const ctx=document.getElementById('normChart');
-  const labels=D.dates.map(fmtLbl);
-  const ds=['GOLD','BRENT','UUP','TLT','GDX','SLV','XLE','TIP'].map(k=>({ label:k, data:norm(D[k]), borderColor:COLORS[k], fill:false, tension:.4, pointRadius:0, borderWidth:1.5, yAxisID:'y' }));
-  const cfg={ type:'line', data:{labels,datasets:ds},
-    options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},
-      plugins:{legend:{display:false},tooltip:{...ttOpts,callbacks:{label:c=>c.dataset.label+': '+c.raw.toFixed(1)+'%'}}},
-      scales:{x:{...xOpts},y:{...yOpts,ticks:{...yOpts.ticks,callback:v=>v+'%'},title:{display:true,text:'Index (Nov 25 = 100)',color:'rgba(255,255,255,.2)',font:{family:'"IBM Plex Mono",monospace',size:8}}}}}};
-  if(charts.norm) charts.norm.destroy();
-  charts.norm=new Chart(ctx,cfg);
-}
-
 // ── BUILD RELATIONSHIP CHART ──
 function buildRel(id, k1, k2, c1, c2) {
   const ctx=document.getElementById(id); if(!ctx) return;
@@ -846,7 +827,6 @@ async function refresh() {
   updateCards();
   updateSparks();
   buildMain();
-  buildNorm();
   buildRels();
   computeSignals();
 }
@@ -857,7 +837,6 @@ async function init() {
   extendData();
   updateCards();
   buildMain();
-  buildNorm();
   buildRels();
   computeSignals();
   // Async load live data then re-render
@@ -866,7 +845,6 @@ async function init() {
   updateCards();
   updateSparks();
   buildMain();
-  buildNorm();
   buildRels();
   computeSignals();
   setInterval(refresh, 60000);
@@ -881,6 +859,14 @@ if(ham) ham.addEventListener('click',function(){var o=menu.classList.toggle('ope
 (function(){var els=document.querySelectorAll('.fu');var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});els.forEach(function(el){io.observe(el)})})();
 
 window.addEventListener('load', init);
+// Rebuild charts on resize for mobile layout changes
+let resizeTimer;
+window.addEventListener('resize', function(){
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(function(){
+    buildMain(); buildNorm(); buildRels();
+  }, 250);
+});
 </script>
 </body>
 </html>
