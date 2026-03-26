@@ -618,8 +618,10 @@ async function fetchOne(sym) {
   try {
     const r = await fetch(`${PROXY}?symbol=${encodeURIComponent(sym)}&range=1d&interval=1d`);
     if (!r.ok) throw new Error(r.status);
-    return await r.json();
-  } catch { return null; }
+    const data = await r.json();
+    console.log('Worker response for', sym, ':', JSON.stringify(data));
+    return data;
+  } catch(e) { console.log('Fetch error for', sym, ':', e); return null; }
 }
 async function fetchAll() {
   const keys = Object.keys(SYMBOLS);
@@ -641,6 +643,7 @@ function norm(arr){ const b=arr[0]; return arr.map(v=>+((v/b)*100).toFixed(2)); 
 
 // ── UPDATE CARDS ──
 function updateCards() {
+  console.log('GOLD live:', live['GOLD'], '| gp(GOLD):', gp('GOLD'));
   const cfg = { GOLD:{pre:'$',d:0}, BRENT:{pre:'$',d:2}, UUP:{pre:'$',d:2}, TLT:{pre:'$',d:2}, TIP:{pre:'$',d:2}, GDX:{pre:'$',d:2}, SLV:{pre:'$',d:2}, XLE:{pre:'$',d:2} };
   Object.keys(cfg).forEach(k => {
     const pr=gp(k), pc=gpc(k), ah=gah(k), c=cfg[k];
@@ -719,7 +722,7 @@ function buildMain() {
     options:{ responsive:true, maintainAspectRatio:false, animation:false,
       interaction:{mode:'index',intersect:false},
       plugins:{ legend:{display:false}, tooltip:{...ttOpts, callbacks:{label:c=>c.datasetIndex===0?'Gold: $'+Math.round(c.raw)+'/oz':'Brent: $'+c.raw.toFixed(2)+'/bbl'}} },
-      scales:{ x:{...xOpts,ticks:{...xOpts.ticks,maxTicksLimit:8,font:{family:'"IBM Plex Mono",monospace',size:7}}},
+      scales:{ x:{...xOpts,bounds:'data',ticks:{...xOpts.ticks,maxRotation:0,minRotation:0,autoSkip:false,font:{family:'"IBM Plex Mono",monospace',size:7},callback:function(val,idx){const n=D.dates.length;const si=new Set([0,Math.floor(n/4),Math.floor(n/2),Math.floor(3*n/4),n-1]);return si.has(idx)?D.dates.map(fmtLbl)[idx]:'';}}},
         y:{position:'left',...yOpts,ticks:{...yOpts.ticks,color:COLORS.GOLD,callback:v=>'$'+Math.round(v)}},
         y2:{position:'right',ticks:{color:COLORS.BRENT,font:{family:'"IBM Plex Mono",monospace',size:8},callback:v=>'$'+v.toFixed(0)},grid:{drawOnChartArea:false}} }}};
   if(charts.main) charts.main.destroy();
@@ -730,13 +733,31 @@ function buildMain() {
 function buildRel(id, k1, k2, c1, c2) {
   const ctx=document.getElementById(id); if(!ctx) return;
   const labels=D.dates.map(fmtLbl);
+  const n=labels.length;
+  // Show only 4 evenly-spaced labels: first, ~33%, ~66%, last
+  const showIdx=new Set([0, Math.floor(n/3), Math.floor(2*n/3), n-1]);
   const cfg={ type:'line', data:{labels,datasets:[
     {label:k1,data:norm(D[k1]),borderColor:c1,fill:false,tension:.4,pointRadius:0,borderWidth:2,yAxisID:'y'},
     {label:k2,data:norm(D[k2]),borderColor:c2,fill:false,tension:.4,pointRadius:0,borderWidth:2,borderDash:[5,3],yAxisID:'y'}
   ]},
-    options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},
+    options:{responsive:true,maintainAspectRatio:false,animation:false,
+      interaction:{mode:'index',intersect:false},
       plugins:{legend:{display:false},tooltip:{...ttOpts,callbacks:{label:c=>c.dataset.label+': '+c.raw.toFixed(1)+'%'}}},
-      scales:{x:{...xOpts,ticks:{...xOpts.ticks,maxTicksLimit:4,font:{family:'"IBM Plex Mono",monospace',size:7}}},y:{...yOpts,ticks:{...yOpts.ticks,callback:v=>v+'%',maxTicksLimit:5}}},layout:{padding:{left:0,right:4,top:4,bottom:0}}}};
+      scales:{
+        x:{...xOpts,
+          bounds:'data',
+          ticks:{
+            ...xOpts.ticks,
+            maxRotation:0,minRotation:0,
+            autoSkip:false,
+            font:{family:'"IBM Plex Mono",monospace',size:7},
+            callback:function(val,idx){ return showIdx.has(idx) ? labels[idx] : ''; }
+          }
+        },
+        y:{...yOpts,ticks:{...yOpts.ticks,callback:v=>v+'%',maxTicksLimit:5}}
+      },
+      layout:{padding:{left:2,right:6,top:4,bottom:0}}
+    }};
   if(charts[id]) charts[id].destroy();
   charts[id]=new Chart(ctx,cfg);
 }
