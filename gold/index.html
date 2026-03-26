@@ -69,9 +69,8 @@ img,video{display:block;max-width:100%}
 .mobile-item.cta-item .mobile-item-label{font-family:var(--sans);font-size:.9rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;text-shadow:none}
 
 .page{padding-top:var(--nav)}
-.fu{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
-.fu.on{opacity:1;transform:translateY(0)}
-/* ensure charts size correctly even before animation */
+.fu{opacity:0;transition:opacity .8s ease}
+.fu.on{opacity:1}
 .btn-red{padding:.52rem 1.2rem;background:var(--red);color:var(--white);border-radius:2rem;font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;transition:background .2s;display:inline-block}
 .btn-red:hover{background:#c01818}
 .btn-white-out{padding:.52rem 1.2rem;border:1.5px solid rgba(255,255,255,.4);border-radius:2rem;font-size:.75rem;font-weight:500;color:rgba(255,255,255,.7);transition:all .2s;display:inline-block}
@@ -849,6 +848,11 @@ async function init() {
   buildRels();
   computeSignals();
   setInterval(refresh, 60000);
+  // Force chart resize after paint so mobile canvas dimensions are correct
+  setTimeout(function(){
+    Object.values(charts).forEach(function(c){ if(c && c.resize) c.resize(); });
+    Object.values(spCharts).forEach(function(c){ if(c && c.resize) c.resize(); });
+  }, 100);
 }
 
 // ── NAV / MOBILE MENU ──
@@ -857,7 +861,22 @@ function closeMenu(){menu.classList.remove('open');ham.classList.remove('open');
 if(ham) ham.addEventListener('click',function(){var o=menu.classList.toggle('open');ham.classList.toggle('open');document.body.style.overflow=o?'hidden':''});
 
 // ── INTERSECTION OBSERVER ──
-(function(){var els=document.querySelectorAll('.fu');var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});els.forEach(function(el){io.observe(el)})})();
+(function(){
+  var els=document.querySelectorAll('.fu');
+  var io=new IntersectionObserver(function(e){
+    e.forEach(function(x){
+      if(x.isIntersecting){
+        x.target.classList.add('on');
+        // Resize charts inside this section so mobile canvas sizes correctly
+        setTimeout(function(){
+          Object.values(charts).forEach(function(c){ if(c && c.resize) c.resize(); });
+        }, 50);
+        io.unobserve(x.target);
+      }
+    });
+  },{threshold:.02,rootMargin:'0px 0px 0px 0px'});
+  els.forEach(function(el){io.observe(el)});
+})();
 
 window.addEventListener('load', init);
 // Rebuild charts on resize for mobile layout changes
@@ -865,7 +884,7 @@ let resizeTimer;
 window.addEventListener('resize', function(){
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(function(){
-    buildMain(); buildNorm(); buildRels();
+    buildMain(); buildRels();
   }, 250);
 });
 </script>
